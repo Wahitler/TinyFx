@@ -1,0 +1,157 @@
+﻿<#@ template language="C#" inherits="MySqlTemplateBase"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TinyFx.Data.MySqlClient" #>
+<#@ import namespace="TinyFx.Data.Schema" #>
+/// <summary>
+/// <#= ClassComment(CurrentProc) #>
+/// 【存储过程 <#= CurrentProc.ProcName #> 的操作类】
+/// </summary>
+public class <#= MOName #> : MySqlProcMO
+{
+    public override string ProcName => "<#= CurrentProc.SqlProcName #>";
+
+<#	/**************************** 构造函数 ************************************/ #>
+	#region Constructors
+	/// <summary>
+	/// 构造函数
+	/// </summary>
+	/// <param name = "database">数据来源</param>
+	public <#= MOName #>(MySqlDatabase database) : base(database) { }
+
+	/// <summary>
+	/// 构造函数
+	/// </summary>
+	/// <param name = "connectionStringName">配置文件.config中定义的连接字符串名称</param>
+	public <#= MOName #>(string connectionStringName = null) : base(connectionStringName) { }
+
+    /// <summary>
+    /// 构造函数
+    /// </summary>
+    /// <param name="connectionString">数据库连接字符串，如server=192.168.1.1;database=testdb;uid=root;pwd=root</param>
+    /// <param name="commandTimeout">CommandTimeout时间</param>
+    public <#= MOName #>(string connectionString, int commandTimeout) : base(connectionString, commandTimeout) { }
+	#endregion // Constructors
+
+	// 获取ProcDao
+	private MySqlProcDao GetProcDao(<#= GetOrmMethodParamsLink(CurrentProc.InputParameters) #>TransactionManager tm = null)
+	{
+		var ret = new MySqlProcDao(ProcName, Database);
+<# foreach(var para in CurrentProc.InputParameters) { #>
+		ret.AddInParameter("<#= para.SqlParamName #>", <#= para.OrmParamValueToDbCode #>, <#= ((MySqlParameterSchema)para).DbTypeString #>);
+<# } #>
+<# foreach(var para in CurrentProc.OutputParameters) { #>
+		ret.AddOutParameter("<#= para.SqlParamName #>", <#= ((MySqlParameterSchema)para).DbTypeString #>);
+<# } #>
+        return ret;
+	}
+
+	/// <summary>
+	/// 获取单行数据
+	/// </summary>
+<# foreach(var para in CurrentProc.InputParameters) { #>
+	/// <#= ParamComment(para) #>
+<# } #>
+	/// <param name="tm">事务对象</param>
+	/// <returns></returns>
+	public DataRow ExecSingle(<#= GetOrmMethodParamsLink(CurrentProc.InputParameters) #>TransactionManager tm = null)
+	{
+		using (var dao = GetProcDao(<#= GetOrmMethodParamsValueLink(CurrentProc.InputParameters, false) #>))
+		{
+			return dao.ExecSingle(tm);
+		}
+	}
+	/// <summary>
+	/// 获取DataTable数据
+	/// </summary>
+<# foreach(var para in CurrentProc.InputParameters) { #>
+	/// <#= ParamComment(para) #>
+<# } #>
+	/// <param name="tm">事务对象</param>
+	/// <returns></returns>
+	public DataTable ExecTable(<#= GetOrmMethodParamsLink(CurrentProc.InputParameters) #>TransactionManager tm = null)
+	{
+		using (var dao = GetProcDao(<#= GetOrmMethodParamsValueLink(CurrentProc.InputParameters, false) #>))
+		{
+			return dao.ExecTable(tm);
+		}
+	}
+
+	/// <summary>
+	/// 获取首行首列值
+	/// </summary>
+	/// <typeparam name="T">目标类型</typeparam>
+<# foreach(var para in CurrentProc.InputParameters) { #>
+	/// <#= ParamComment(para) #>
+<# } #>
+	/// <param name="tm">事务对象</param>
+	/// <returns></returns>
+	public T ExecScalar<T>(<#= GetOrmMethodParamsLink(CurrentProc.InputParameters) #>TransactionManager tm = null)
+	{
+	    return ExecSingle(<#= GetOrmMethodParamsValueLink(CurrentProc.InputParameters, true) #>tm)[0].ConvertTo<T>();
+	}
+
+	/// <summary>
+	/// 获取执行存储过程返回的所有数据
+	/// </summary>
+<# foreach(var para in CurrentProc.InputParameters) { #>
+	/// <#= ParamComment(para) #>
+<# } #>
+	/// <param name="tm">事务对象</param>
+	/// <returns></returns>
+	public ResultData Execute(<#= GetOrmMethodParamsLink(CurrentProc.InputParameters) #>TransactionManager tm = null)
+	{
+	    ResultData ret = null;
+	    using (var dao = GetProcDao(<#= GetOrmMethodParamsValueLink(CurrentProc.InputParameters, false) #>))
+	    {
+	        var reader = dao.ExecReader(tm);
+	        if (reader.FieldCount == 0) return null;
+	        ret = new ResultData();
+	        do
+	        {
+	            var table = reader.ToTable(false);
+	            ret.Results.Add(table);
+	        }
+	        while (reader.NextResult());
+<# foreach(var para in  CurrentProc.OutputParameters) { #>
+	        ret.<#= para.OrmPropertyName #> = dao.GetParameterValue<<#= para.DotNetTypeString #>>("<#= para.SqlParamName #>");
+<# } #>
+	    }
+	    return ret;
+	}
+
+	/// <summary>
+	/// 存储过程返回的数据对象
+	/// </summary>
+	public class ResultData
+	{
+<# if (CurrentProc.HasOutputParameter) { #>
+		#region OutputParameters
+<#		foreach(var param in CurrentProc.OutputParameters) { #>	
+		/// <summary>
+		/// 输出参数
+		/// 【<#= param.ParameterName #> <#= param.EngineTypeStringFull #>】
+		/// </summary>
+		public <#= param.DotNetTypeString #> <#= param.OrmPropertyName #> { get; set; }
+<#		} #>	
+		#endregion // OutputParameters
+<# } #>
+
+	    /// <summary>
+	    /// 存储过程返回的结果集集合
+	    /// </summary>
+	    public List<DataTable> Results = new List<DataTable>();
+		
+		/// <summary>
+		/// 是否有结果集
+		/// </summary>
+	    public bool HasResult => Results.Count > 0;
+
+	    /// <summary>
+	    /// 获取存储过程返回的第一个DataTable结果集
+	    /// </summary>
+	    public DataTable FirstResult => HasResult ? Results[0] : null;
+	}
+}

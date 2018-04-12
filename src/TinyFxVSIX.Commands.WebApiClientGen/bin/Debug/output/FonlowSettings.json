@@ -1,0 +1,17 @@
+{
+  "ClientGenMode": 2,
+  "AssemblyFolder": "D:\\TinyFx\\src\\TinyFxVSIX.Commands.WebApiClientGen\\bin\\Debug\\WebApiBin",
+  "AssemblyNames": [
+    "DemoWebApi.DemoData.dll",
+    "DemoWebApi.dll"
+  ],
+  "XmlDocuments": [],
+  "ExcludedControllerNames": [],
+  "RouteTemplate": null,
+  "RouteDefaults": null,
+  "RouteConstraints": null,
+  "CherryPickingMethods": 1,
+  "GenerateBothAsyncAndSync": true,
+  "CamelCase": true,
+  "ContentType": ""
+}

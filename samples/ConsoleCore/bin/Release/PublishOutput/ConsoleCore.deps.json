@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "ConsoleCore/1.0.0": {
+        "dependencies": {
+          "TinyFx": "1.0.0",
+          "TinyFx.Core": "1.0.0"
+        },
+        "runtime": {
+          "ConsoleCore.dll": {}
+        }
+      },
+      "TinyFx/1.0.0": {
+        "runtime": {
+          "TinyFx.dll": {}
+        }
+      },
+      "TinyFx.Core/1.0.0": {
+        "dependencies": {
+          "TinyFx": "1.0.0"
+        },
+        "runtime": {
+          "TinyFx.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TinyFx/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TinyFx.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

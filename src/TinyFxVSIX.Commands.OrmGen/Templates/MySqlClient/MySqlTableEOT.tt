@@ -1,0 +1,117 @@
+﻿<#@ template language="C#" inherits="MySqlTemplateBase"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TinyFx.Data.MySqlClient" #>
+/// <summary>
+/// <#= ClassComment(CurrentTable) #>
+/// 【表 <#= CurrentTable.TableName #> 的实体类】
+/// </summary>
+[Serializable]
+public class <#= EOName #> : IRowMapper<<#= EOName #>>
+{
+	/// <summary>
+	/// 构造函数 
+	/// </summary>
+	public <#= EOName #>()
+	{
+<# foreach (var item in CurrentTable.Columns) {
+		if (item.HasDefaultValue) {
+			string value = item.OrmDefaultValueString;
+			if (!string.IsNullOrEmpty(value)) { #>
+		this.<#= item.OrmPropertyName #> = <#= value #>;
+<# 
+			}
+		}
+	} #>
+	}
+
+	#region 主键原始值 & 主键集合
+<# 
+	// 主键原始值****************************************************************************************
+if (CurrentTable.HasPrimaryKey){ #>
+    
+	/// <summary>
+	/// 当前对象是否保存原始主键值，当修改了主键值时为 true
+	/// </summary>
+	public bool HasOriginal { get; protected set; }
+<#		foreach (var column in CurrentTable.PrimaryKey.Columns)
+		{
+			string propertyName = column.OrmPropertyName;
+#>
+	protected <#= column.DotNetTypeString #> _original<#= propertyName #>;
+	/// <summary>
+	/// 【数据库中的原始主键 <#= column.ColumnName #> 值的副本，用于主键值更新】
+	/// </summary>
+	public <#= column.DotNetTypeString #> Original<#= propertyName #>
+	{
+		get { return _original<#= propertyName #>; }
+		set { HasOriginal = true; _original<#= propertyName #> = value; }
+	}
+<#		} #>
+<#	} #>
+    /// <summary>
+    /// 获取主键集合。key: 数据库字段名称, value: 主键值
+    /// </summary>
+    /// <returns></returns>
+    public Dictionary<string, object> GetPrimaryKeys()
+    {
+<#if (CurrentTable.HasPrimaryKey){ #>
+        return new Dictionary<string, object>() {<#foreach (var column in CurrentTable.PrimaryKey.Columns) {#> { "<#= column.OrmPropertyName #>", <#= column.OrmPropertyName #> }, <#} #>};
+<# } else { #>
+		return null;
+<# } #>
+    }
+    /// <summary>
+    /// 获取主键集合JSON格式
+    /// </summary>
+    /// <returns></returns>
+    public string GetPrimaryKeysJson() => SerializerUtil.SerializeJson(GetPrimaryKeys());
+	#endregion // 主键原始值
+
+	#region 所有字段
+<# foreach (var column in CurrentTable.Columns) {  
+		string propertyName = column.OrmPropertyName;
+#>
+	/// <summary>
+	/// <#= PropertyComment(column) #>
+	/// 【<#= column.OrmColumnTypeString #> <#= column.EngineTypeStringFull #>】
+	/// </summary>
+	public <#= column.DotNetTypeString #> <#= propertyName #> { get; set; }
+<# } #>
+	#endregion // 所有列
+
+	#region 实体映射
+	
+	/// <summary>
+	/// 将IDataReader映射成实体对象
+	/// </summary>
+	/// <param name = "reader">只进结果集流</param>
+	/// <return>实体对象</return>
+	public <#= EOName #> MapRow(IDataReader reader)
+	{
+		return MapDataReader(reader);
+	}
+	
+	/// <summary>
+	/// 将IDataReader映射成实体对象
+	/// </summary>
+	/// <param name = "reader">只进结果集流</param>
+	/// <return>实体对象</return>
+	public static <#= EOName #> MapDataReader(IDataReader reader)
+	{
+	    <#= EOName #> ret = new <#= EOName #>();
+<# foreach (var column in CurrentTable.Columns) {
+		string propertyName = column.OrmPropertyName;
+#>
+		ret.<#= propertyName #> = reader.<#= column.OrmReaderMethodName #>("<#= column.ColumnName #>");
+<#		if (column.IsPrimaryKey) {#>
+		ret.Original<#= propertyName #> = ret.<#= propertyName #>;
+<#		}
+	} #>
+	    return ret;
+	}
+	
+	#endregion
+}

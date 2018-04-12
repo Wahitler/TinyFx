@@ -1,0 +1,2295 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TinyFx.Windows</name>
+    </assembly>
+    <members>
+        <member name="T:TinyFx.Windows.AdslConnector">
+            <summary>
+            ADSL连接辅助器
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.AdslConnector.ConnectName">
+            <summary>
+            宽带连接名
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.AdslConnector.UserName">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.AdslConnector.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.AdslConnector.Interval">
+            <summary>
+            重连间隔
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.AdslConnector.Connect">
+            <summary>
+            连接
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.AdslConnector.Disconnect">
+            <summary>
+            断开
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.AdslConnector.Reconnect">
+            <summary>
+            重连
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.AdslConnector.InvokeCmd(System.String)">
+            <summary>
+            执行cmd命令
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Windows.ODBCUtil">
+            <summary>
+            ODBC操作辅助类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.GetDriverNames">
+            <summary>
+            获取已安装的驱动名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.GetDriver(System.String)">
+            <summary>
+            获取驱动程序
+            </summary>
+            <param name="driverName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.GetUserDSNs">
+            <summary>
+            获取用户DSN列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.GetSystemDSNs">
+            <summary>
+            获取系统DSN列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.ExistsUserDSN(System.String)">
+            <summary>
+            检查用户DSN是否存在
+            </summary>
+            <param name="dsnName">DSN名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.ExistsSystemDSN(System.String)">
+            <summary>
+            检查系统DSN是否存在
+            </summary>
+            <param name="dsnName">DSN名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.RemoveUserDSN(System.String)">
+            <summary>
+            移除用户DSN
+            </summary>
+            <param name="dsnName">DSN名称</param>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.RemoveSystemDSN(System.String)">
+            <summary>
+            移除系统DSN
+            </summary>
+            <param name="dsnName">DSN名称</param>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.CreateUserDSN(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            创建用户DSN
+            </summary>
+            <param name="dsnName">DSN名称</param>
+            <param name="driverName">使用的驱动名称</param>
+            <param name="server">服务器地址</param>
+            <param name="database">数据库名</param>
+            <param name="trustedConnection">是否使用集成验证</param>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.CreateSystemDSN(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            创建系统DSN
+            </summary>
+            <param name="dsnName">DSN名称</param>
+            <param name="driverName">使用的驱动名称</param>
+            <param name="server">服务器地址</param>
+            <param name="database">数据库名</param>
+            <param name="trustedConnection">是否使用集成验证</param>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.CreateUserSqlServerDSN(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            创建用户SQL Server DSN
+            </summary>
+            <param name="dsnName">DSN名称</param>
+            <param name="server">服务器地址</param>
+            <param name="database">数据库名</param>
+            <param name="trustedConnection">是否使用集成验证</param>
+        </member>
+        <member name="M:TinyFx.Windows.ODBCUtil.CreateSystemSqlServerDSN(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            创建系统SQL Server DSN
+            </summary>
+            <param name="dsnName">DSN名称</param>
+            <param name="server">服务器地址</param>
+            <param name="database">数据库名</param>
+            <param name="trustedConnection">是否使用集成验证</param>
+        </member>
+        <member name="T:TinyFx.Windows.WindowsServiceUtil">
+            <summary>
+            Windows 服务操作辅助类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsServiceUtil.Exist(System.String)">
+            <summary>
+            判断服务是否存在
+            </summary>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsServiceUtil.Start(System.String)">
+            <summary>
+            启动服务
+            </summary>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsServiceUtil.Stop(System.String)">
+            <summary>
+            停止服务
+            </summary>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsServiceUtil.Install(System.String,System.String)">
+            <summary>
+            安装服务
+            </summary>
+            <param name="serviceName"></param>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsServiceUtil.UnInstall(System.String,System.String)">
+            <summary>
+            卸载服务
+            </summary>
+            <param name="serviceName"></param>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Windows.Components.ListViewColumnSorter">
+            <summary>
+            用于ListView.ListViewItemSorter方法的的排序比较器
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ListViewColumnSorter.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ListViewColumnSorter.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="columnIndex"></param>
+            <param name="isDesc"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ListViewColumnSorter.Compare(System.Object,System.Object)">
+            <summary>
+            比较器
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ListViewColumnSorter.SetColumnSorter(System.Windows.Forms.ListView)">
+            <summary>
+            设置ListView的ColumnClick事件
+            </summary>
+            <param name="lv"></param>
+        </member>
+        <member name="T:TinyFx.Windows.Components.ScintillaControl">
+            <summary>
+            ScintillaNET封装控件
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ScintillaControl.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ScintillaControl.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ScintillaControl.OnTextChanged(System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="F:TinyFx.Windows.Components.ScintillaControl.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ScintillaControl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.ScintillaControl.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTPClient">
+            <summary>
+            从NTP/SNTP服务器检索数据的类，从 http://www.faqs.org/rfcs/rfc2030.html 查看协议详细信息。
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTPClient.DefaultServer">
+            <summary>
+            默认服务器
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTPClient.DefaultTimeout">
+            <summary>
+            默认的发送和接收使用的毫秒数。
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTPClient.DefaultVersionNumber">
+            <summary>
+            默认 NTP/SNTP 版本号。
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTPClient.IsBusy">
+            <summary>
+            获取SNTPClient 是否繁忙。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTPClient.Now">
+            <summary>
+            使用默认服务器获取本地DateTime
+            如果有错误或异常，返回DateTime.MinValue
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTPClient.RemoteSNTPServer">
+            <summary>
+            获取或设置服务器。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTPClient.Timeout">
+            <summary>
+            获取或设置发送和接受的Timeout时间（毫秒）。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTPClient.UpdateLocalDateTime">
+            <summary>
+            获取或设置是否通过查询服务器时间更新本地时间。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTPClient.VersionNumber">
+            <summary>
+            获取或设置使用的 NTP/SNTP 版本。
+            </summary>
+        </member>
+        <member name="E:TinyFx.Windows.Components.SNTPClient.QueryServerCompleted">
+            <summary>
+            查询服务器成功完成时引发。
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.GetCurrentLocalTimeZoneOffset">
+            <summary>
+            获取当前本地时区相对于UTC的偏移量。
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.GetNow">
+            <summary>
+            使用默认服务器获取本地DateTime
+            如果有错误或异常，返回DateTime.MinValue
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.GetNow(TinyFx.Windows.Components.SNTP.RemoteSNTPServer)">
+            <summary>
+            使用指定服务器获取本地DateTime
+            如果有错误或异常，返回DateTime.MinValue
+            </summary>
+            <param name="remoteSNTPServer">使用的服务器</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.GetNow(System.Int32)">
+            <summary>
+            使用默认服务器获取本地DateTime
+            如果有错误或异常，返回DateTime.MinValue
+            </summary>
+            <param name="timeout">用于发送和接收的超时毫秒。</param>
+            <returns>本地真实日期时间</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.GetNow(TinyFx.Windows.Components.SNTP.RemoteSNTPServer,System.Int32)">
+            <summary>
+            使用指定服务器获取本地DateTime
+            如果有错误或异常，返回DateTime.MinValue
+            </summary>
+            <param name="remoteSNTPServer">使用的服务器</param>
+            <param name="timeout">用于发送和接收的超时毫秒。</param>
+            <returns>本地真实日期时间</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.QueryServerAsync">
+            <summary>
+            异步查询制定服务器。
+            </summary>
+            <returns>如果 SNTPClient不繁忙则返回True，否则false。</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPClient.OnQueryServerCompleted(TinyFx.Windows.Components.SNTP.QueryServerCompletedEventArgs)">
+            <summary>
+            引发的QueryServerCompleted事件。
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPUtil.GetSNTPNow">
+            <summary>
+            获取SNTP时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPUtil.SetLocalTime(System.DateTime)">
+            <summary>
+            使用指定的时间更改当前操作系统时间（需要管理员权限）
+            </summary>
+            <param name="newDate">指定的时间</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTPUtil.SyncSNTPTime">
+            <summary>
+            同步SNTP时间到本机系统
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.ErrorData">
+            <summary>
+            Class that holds data relating to any errors that occurred.
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.ErrorData.#ctor(System.String)">
+            <summary>
+            Creates a new instance of ErrorData.
+            </summary>
+            <param name="errorText">A textual representation of the error that ocurred.</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.ErrorData.#ctor(System.Exception)">
+            <summary>
+            Creates a new instance of ErrorData.
+            </summary>
+            <param name="exception">The exception (if any) that was caught.</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.ErrorData.#ctor">
+            <summary>
+            Creates a new instance of ErrorData.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.ErrorData.Error">
+            <summary>
+            Gets whether an error occurred.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.ErrorData.ErrorText">
+            <summary>
+            Gets a textual representation of the error that ocurred.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.ErrorData.Exception">
+            <summary>
+            Gets the exception (if any) that was caught.
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.LeapIndicator">
+            <summary>
+            Warns of an impending leap second to be inserted/deleted in the last minute of the current day.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.LeapIndicator.NoWarning">
+            <summary>
+            No warning.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.LeapIndicator.LastMinute61Seconds">
+            <summary>
+            Last minute has 61 seconds.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.LeapIndicator.LastMinute59Seconds">
+            <summary>
+            Last minute has 59 seconds.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.LeapIndicator.Alarm">
+            <summary>
+            Alarm condition (clock not synchronized).
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.Mode">
+            <summary>
+            Indicator of the mode of operation.
+            In unicast and anycast modes, the client sets this field to 3 (client) in the request
+            and the server sets it to 4 (server) in the reply.
+            In multicast mode, the server sets this field to 5 (broadcast).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.Reserved">
+            <summary>
+            Reserved.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.SymmetricActive">
+            <summary>
+            Symmetric active.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.SymmetricPassive">
+            <summary>
+            Symmetric passive.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.Client">
+            <summary>
+            Client.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.Server">
+            <summary>
+            Server.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.Broadcast">
+            <summary>
+            Broadcast.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.ReservedNTPControl">
+            <summary>
+            Reserved for NTP control message.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Mode.ReservedPrivate">
+            <summary>
+            Reserved for private use.
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.QueryServerCompletedEventArgs">
+            <summary>
+            Arguments that are passed along with the SNTPClient.QueryServerCompleted event.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.QueryServerCompletedEventArgs.Data">
+            <summary>
+            Gets the data that was returned by the server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.QueryServerCompletedEventArgs.ErrorData">
+            <summary>
+            Gets data relating to any error that occurred.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.QueryServerCompletedEventArgs.LocalDateTimeUpdated">
+            <summary>
+            Gets whether the local date and time was updated.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.QueryServerCompletedEventArgs.Succeeded">
+            <summary>
+            Gets whether the server query completed successfully.
+            NB: It is possible that other errors occurred (not related to the querying of the server) after the query,
+            so ErrorData should still be examined regardless of the value of this property.
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.ReferenceIdentifier">
+            <summary>
+            Identifier of the reference source.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.LOCL">
+            <summary>
+            Uncalibrated local clock used as a primary reference for a subnet without external means of synchronization.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.PPS">
+            <summary>
+            Atomic clock or other pulse-per-second source individually calibrated to national standards.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.ACTS">
+            <summary>
+            NIST dialup modem service.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.USNO">
+            <summary>
+            U.S. Naval Observatory modem service.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.PTB">
+            <summary>
+            PTB (Germany) modem service.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.TDF">
+            <summary>
+            Allouis (France) Radio 164 kHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.DCF">
+            <summary>
+            Mainflingen (Germany) Radio 77.5 kHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.MSF">
+            <summary>
+            Rugby (UK) Radio 60 kHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.WWV">
+            <summary>
+            Ft. Collins (US) Radio 2.5, 5, 10, 15, 20 MHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.WWVB">
+            <summary>
+            Boulder (US) Radio 60 kHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.WWVH">
+            <summary>
+            Kaui Hawaii (US) Radio 2.5, 5, 10, 15 MHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.CHU">
+            <summary>
+            Ottawa (Canada) Radio 3330, 7335, 14670 kHz.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.LORC">
+            <summary>
+            LORAN-C radionavigation system.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.OMEG">
+            <summary>
+            OMEGA radionavigation system.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.GPS">
+            <summary>
+            Global Positioning Service.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.ReferenceIdentifier.GOES">
+            <summary>
+            Geostationary Orbit Environment Satellite.
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.RemoteSNTPServer">
+            <summary>
+            A class that holds the information needed to connect to a remote NTP/SNTP server.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Africa">
+            <summary>
+            African RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.AppleEurope">
+            <summary>
+            Apple Europe.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.AppleEurope2">
+            <summary>
+            Apple Europe (2).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Asia">
+            <summary>
+            Asian RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.AsiaServers">
+            <summary>
+            An array of Asian RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Australia">
+            <summary>
+            Australian RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.AustraliaServers">
+            <summary>
+            An array of Australian RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.BlueYonder">
+            <summary>
+            Blue Yonder UK (Virgin Media).
+            [When I checked 12th July 2009, it was using USNavalObservatory3]
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Canada">
+            <summary>
+            Canadian RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.CanadaServers">
+            <summary>
+            An array of Canadian RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Default">
+            <summary>
+            A remote NTP/SNTP server configured with the default values.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.DefaultHostName">
+            <summary>
+            The default server host name.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.DefaultPort">
+            <summary>
+            The dafault port number for a NTP/SNTP server.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Europe">
+            <summary>
+            European RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.EuropeServers">
+            <summary>
+            An array of European RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Microsoft">
+            <summary>
+            The Microsoft (Redmond, Washington) RemoteSNTPServer (time-nw.nist.gov).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.NorthAmerica">
+            <summary>
+            North American RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.NorthAmericaServers">
+            <summary>
+            An array of North American RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.NTL">
+            <summary>
+            NTL UK (Virgin Media).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Oceania">
+            <summary>
+            Pacific RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.OceaniaServers">
+            <summary>
+            An array of Pacific RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Pool">
+            <summary>
+            General RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.PoolServers">
+            <summary>
+            An array of general RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.SouthAmerica">
+            <summary>
+            South American RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.SouthAmericaServers">
+            <summary>
+            An array of South American RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.UKJanetGPS">
+            <summary>
+            A United Kindom GPS Primary server.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.UnitedKingdom">
+            <summary>
+            United Kingdom RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.UnitedKingdomServers">
+            <summary>
+            An array of UK RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.UnitedStates">
+            <summary>
+            US RemoteSNTPServer.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.UnitedStatesServers">
+            <summary>
+            An array of US RemoteSNTPServers.
+            See http://www.pool.ntp.org
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.USNavalObservatory">
+            <summary>
+            U.S. Naval Observatory.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.USNavalObservatory2">
+            <summary>
+            U.S. Naval Observatory (2).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.USNavalObservatory3">
+            <summary>
+            U.S. Naval Observatory (3).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.USXMissionGPS">
+            <summary>
+            A United States GPS Primary server.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Windows">
+            <summary>
+            The Microsoft Windows RemoteSNTPServer (time.windows.com).
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates a new instance of a remote NTP/SNTP server.
+            </summary>
+            <param name="hostNameOrAddress">The host name or address of the server.</param>
+            <param name="port">The port to use (normally 123).</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.#ctor(System.String)">
+            <summary>
+            Creates a new instance of a remote NTP/SNTP server.
+            </summary>
+            <param name="hostNameOrAddress">The host name or address of the server.</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.#ctor">
+            <summary>
+            Creates a new instance of a remote NTP/SNTP server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.HostNameOrAddress">
+            <summary>
+            Gets or sets the host name or address of the server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.Port">
+            <summary>
+            Gets or sets the port number that this server uses.
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.GetIPEndPoint">
+            <summary>
+            Attempts to get the System.Net.IEPEndPoint of this server.
+            </summary>
+            <returns>The System.Net.IEPEndPoint of this server.</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.RemoteSNTPServer.ToString">
+            <summary>
+            Returns the host name, IP address and port number of this server.
+            </summary>
+            <returns>The host name, IP address and port number of this server.</returns>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.SNTPData">
+            <summary>
+            A class that represents a SNTP packet.
+            See http://www.faqs.org/rfcs/rfc2030.html for full details of protocol.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.SNTPData.MaximumLength">
+            <summary>
+            The maximum number of bytes in a SNTP packet.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.SNTPData.MinimumLength">
+            <summary>
+            The minimum number of bytes in a SNTP packet.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.SNTPData.TicksPerSecond">
+            <summary>
+            Represents the number of ticks in 1 second.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.DestinationDateTime">
+            <summary>
+            Gets the DateTime (UTC) when the data arrived from the server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.LeapIndicator">
+            <summary>
+            Gets a warning of an impending leap second to be inserted/deleted in the last minute of the current day.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.LeapIndicatorText">
+            <summary>
+            Gets a textual representation of the LeapIndicator property.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.Length">
+            <summary>
+            Gets the number of bytes in the packet.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.LocalClockOffset">
+            <summary>
+            Gets the difference in seconds between the local time and the time retrieved from the server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.Mode">
+            <summary>
+            Gets the operating mode of whatever last altered the packet.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.ModeText">
+            <summary>
+            Gets a textual representation of the Mode property.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.OriginateDateTime">
+            <summary>
+            Gets the DateTime (UTC) at which the request departed the client for the server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.PollInterval">
+            <summary>
+            Gets the maximum interval between successive messages, in seconds.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.Precision">
+            <summary>
+            Gets the precision of the clock, in seconds.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.ReceiveDateTime">
+            <summary>
+            Gets the DateTime (UTC) at which the request arrived at the server.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.ReferenceDateTime">
+            <summary>
+            Gets the DateTime (UTC) at which the clock was last set or corrected.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.ReferenceIdentifier">
+            <summary>
+            Gets the identifier of the reference source.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.RootDelay">
+            <summary>
+            Gets the total delay to the primary reference source, in seconds.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.RootDispersion">
+            <summary>
+            Gets the nominal error relative to the primary reference source, in seconds.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.RoundTripDelay">
+            <summary>
+            Gets the total roundtrip delay, in seconds.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.Stratum">
+            <summary>
+            Gets the stratum level of the clock.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.StratumText">
+            <summary>
+            Gets a textual representation of the Stratum property.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.TransmitDateTime">
+            <summary>
+            Gets the DateTime (UTC) at which the reply departed the server for the client.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.VersionNumber">
+            <summary>
+            Gets the NTP/SNTP version number.
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.SNTP.SNTPData.VersionNumberText">
+            <summary>
+            Gets a textual representation of the VersionNumber property.
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.SNTPData.DateTimeToTimestamp(System.DateTime,System.Int32)">
+            <summary>
+            Converts a DateTime into a byte array and stores it starting at the position specifed.
+            </summary>
+            <param name="dateTime">The DateTime to convert.</param>
+            <param name="startIndex">The index in the data at which to start.</param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.SNTPData.SecondsStampToSeconds(System.Int32)">
+            <summary>
+            Converts a 32bit seconds (16 integer part, 16 fractional part) into a double that represents the value in seconds.
+            </summary>
+            <param name="startIndex">The index in the data at which to start.</param>
+            <returns>A double that represents the value in seconds</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.SNTPData.TimestampToDateTime(System.Int32)">
+            <summary>
+            Converts a byte array starting at the position specified into a DateTime.
+            </summary>
+            <param name="startIndex">The index in the data at which to start.</param>
+            <returns>A DateTime converted from a byte array starting at the position specified.</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.SNTPData.GetClientRequestPacket(TinyFx.Windows.Components.SNTP.VersionNumber)">
+            <summary>
+            A SNTPData that is used by a client to send to a server to request data.
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.SNTPData.op_Implicit(System.Byte[])~TinyFx.Windows.Components.SNTP.SNTPData">
+            <summary>
+            转换器
+            </summary>
+            <param name="byteArray"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.SNTP.SNTPData.op_Implicit(TinyFx.Windows.Components.SNTP.SNTPData)~System.Byte[]">
+            <summary>
+            转换器
+            </summary>
+            <param name="sntpPacket"></param>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.Stratum">
+            <summary>
+            Indicator of the stratum level of a server clock.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Unspecified">
+            <summary>
+            Unspecified or unavailable.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Primary">
+            <summary>
+            Primary reference (e.g. radio clock).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary3">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary4">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary5">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary6">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary7">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary8">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary9">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary10">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary11">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary12">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary13">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary14">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.Stratum.Secondary15">
+            <summary>
+            Secondary reference (via NTP or SNTP).
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.SNTP.VersionNumber">
+            <summary>
+            Indicator of the NTP/SNTP version number.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.VersionNumber.Version3">
+            <summary>
+            Version 3 (IPv4 only).
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.Components.SNTP.VersionNumber.Version4">
+            <summary>
+            Version 4 (IPv4, IPv6 and OSI).
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Components.TextBoxTraceListener">
+            <summary>
+            TextBox控件Trace侦听器
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.TextBoxTraceListener.ThrowException">
+            <summary>
+            抛出的异常
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.TextBoxTraceListener.MaxLines">
+            <summary>
+            最大行数
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.Components.TextBoxTraceListener.EmptyOnMaxLines">
+            <summary>
+            空最大行数
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Components.TextBoxTraceListener.#ctor(System.Windows.Forms.TextBox)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.TextBoxTraceListener.AddTraceListeners(System.Windows.Forms.TextBox)">
+            <summary>
+            创建一个侦听器并添加到侦听器集合中
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.TextBoxTraceListener.Write(System.String)">
+            <summary>
+            写入信息
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:TinyFx.Windows.Components.TextBoxTraceListener.WriteLine(System.String)">
+            <summary>
+            写行信息
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:TinyFx.Windows.EnvDTE.EnvDTEWraper">
+            <summary>
+            DTE封装
+                DTE -> Solution -> Projects -> Project -> ProjectItems -> ProjectItem -> FileCodeModel -> CodeElements
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvDTEWraper.#ctor(System.IServiceProvider)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="provider"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvDTEWraper.#ctor(System.String)">
+            <summary>
+            通过解决方案名称获取DTE，注意同一个解决方案只能打开一个，否则只能获取第一个
+            </summary>
+            <param name="solutionName">解决方案文件全路径名称或者解决方案名称</param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvDTEWraper.#ctor(TinyFx.Windows.EnvDTE.VSProgID)">
+            <summary>
+            如果打开多个，无法确定具体打开的那个VS，不建议使用
+            </summary>
+            <param name="progID"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvDTEWraper.GetAllDTE">
+            <summary>
+            获取所有DTE
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvDTEWraper.DTE">
+            <summary>
+            当前DTE对象
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvDTEWraper.Solution">
+            <summary>
+            当前Solution
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvDTEWraper.Item(System.String)">
+            <summary>
+            获取指定名称的Project
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvDTEWraper.ActiveProject">
+            <summary>
+            当前选择的项目，如果解决方案中选择了多项则返回NULL
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvDTEWraper.Projects">
+            <summary>
+            解决方案中所有项目
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvDTEWraper.SetVariable(System.String,System.String)">
+            <summary>
+            设置变量
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvDTEWraper.GetVariable(System.String)">
+            <summary>
+            获取变量
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Windows.EnvDTE.EnvProjectWraper">
+            <summary>
+            EnvProject包装类
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.EnvProject">
+            <summary>
+            EnvProject对象
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.EnvVSProject">
+            <summary>
+            获得VSProject对象
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.#ctor(EnvDTE.Project)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="project"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.SetVariable(System.String,System.String)">
+            <summary>
+            设置变量
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.GetVariable(System.String)">
+            <summary>
+            获取变量
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.AddReference(System.String)">
+            <summary>
+            添加引用
+            </summary>
+            <param name="bstrPath"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.AddFromFile(System.String)">
+            <summary>
+            添加文件
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.AddFromFiles(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            添加文件
+            </summary>
+            <param name="files"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.AddFromDirectory(System.String)">
+            <summary>
+            添加目录
+            </summary>
+            <param name="dir"></param>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.IsWebProject">
+            <summary>
+            是否是Web项目
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.SccProvider">
+            <summary>
+            源代码管理提供程序
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.IsDirty">
+            <summary>
+            是否目录
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Collection">
+            <summary>
+            项目集合
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.DTE">
+            <summary>
+            DTE
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Kind">
+            <summary>
+            KIND
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Properties">
+            <summary>
+            属性集合
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.UniqueName">
+            <summary>
+            唯一名称
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Object">
+            <summary>
+            对象
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.ExtenderNames">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.ExtenderCATID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.FullName">
+            <summary>
+            全文件名
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Saved">
+            <summary>
+            是否保存
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.ConfigurationManager">
+            <summary>
+            配置管理
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.Globals">
+            <summary>
+            全局
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.ParentProjectItem">
+            <summary>
+            父项目对象
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.CodeModel">
+            <summary>
+            CodeModel
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.SaveAs(System.String)">
+            <summary>
+            保存为
+            </summary>
+            <param name="NewFileName"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.Save(System.String)">
+            <summary>
+            保存
+            </summary>
+            <param name="FileName"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.Delete">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.GetFullPath(EnvDTE.ProjectItem)">
+            <summary>
+            获取项文件名
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.EnvProjectWraper.get_Extender(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ExtenderName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.EnvDTE#Project#Name">
+            <summary>
+            项目名
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.EnvDTE#Project#IsDirty">
+            <summary>
+            是否目录
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.EnvDTE.EnvProjectWraper.EnvDTE#Project#Saved">
+            <summary>
+            是否以保存
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.EnvDTE.SccProvider">
+            <summary>
+            源代码管理提供程序
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.SccProvider.None">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.SccProvider.TFS">
+            <summary>
+            TFS
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.SccProvider.SVN">
+            <summary>
+            SVN
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.SccProvider.GIT">
+            <summary>
+            GIT
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.TfsSourceControl.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="projectCollectionUrl">TFS 项目集合地址：http://172.28.9.211:8080/tfs/OSCCollection </param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.TfsSourceControl.CheckOut(System.String)">
+            <summary>
+            签出文件
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.TfsSourceControl.CheckOutDir(System.String)">
+            <summary>
+            签出目录
+            </summary>
+            <param name="dir"></param>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.TfsSourceControl.CheckIn(System.String)">
+            <summary>
+            签入目录
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.TfsSourceControl.PendAdd(System.String)">
+            <summary>
+            添加文件
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.EnvDTE.TfsSourceControl.GetWorkspace(System.String)">
+            <summary>
+            获取路径所在workspace
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Windows.EnvDTE.VSProgID">
+            <summary>
+            VSProgID
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.VSProgID.VS2010">
+            <summary>
+            VisualStudio.DTE.10.0
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.VSProgID.VS2012">
+            <summary>
+            VisualStudio.DTE.11.0
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.VSProgID.VS2013">
+            <summary>
+            VisualStudio.DTE.12.0
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.VSProgID.VS2015">
+            <summary>
+            VisualStudio.DTE.14.0
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.EnvDTE.VSProgID.VS2017">
+            <summary>
+            VisualStudio.DTE.15.0
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Extensions.Topshelf.TopshelfUtil.Run``1(System.String)">
+            <summary>
+            运行服务
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="serviceName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser">
+            <summary>
+            WebBrowser扩展
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.AttachInterfaces(System.Object)">
+            <summary>
+            This method supports the .NET Framework infrastructure and is not intended to be used directly from your code. 
+            Called by the control when the underlying ActiveX control is created. 
+            </summary>
+            <param name="nativeActiveXObject"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.DetachInterfaces">
+            <summary>
+            This method supports the .NET Framework infrastructure and is not intended to be used directly from your code. 
+            Called by the control when the underlying ActiveX control is discarded. 
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.Application">
+            <summary>
+            Returns the automation object for the web browser
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.CreateSink">
+            <summary>
+            This method will be called to give you a chance to create your own event sink
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.DetachSink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.Downloading">
+            <summary>
+            Fires when downloading of a document begins
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.OnDownloading(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.Downloading"/> event
+            </summary>
+            <param name="e">Empty <see cref="T:System.EventArgs"/></param>
+            <remarks>
+            You could start an animation or a notification that downloading is starting
+            </remarks>
+        </member>
+        <member name="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.DownloadComplete">
+            <summary>
+            Fires when downloading is completed
+            </summary>
+            <remarks>
+            Here you could start monitoring for script errors. 
+            </remarks>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.OnDownloadComplete(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.DownloadComplete"/> event
+            </summary>
+            <param name="e">Empty <see cref="T:System.EventArgs"/></param>
+        </member>
+        <member name="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.StartNewWindow">
+            <summary>
+            Raised when a new window is to be created. Extends DWebBrowserEvents2::NewWindow2 with additional information about the new window.
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.OnStartNewWindow(TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs)">
+            <summary>
+            Raises the <see cref="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.StartNewWindow"/> event
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Thrown when BrowserExtendedNavigatingEventArgs is null</exception>
+        </member>
+        <member name="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.StartNavigate">
+            <summary>
+            Fires before navigation occurs in the given object (on either a window or frameset element).
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.OnStartNavigate(TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs)">
+            <summary>
+            Raises the <see cref="E:TinyFx.Windows.WebBrowsers.ExtendedWebBrowser.StartNavigate"/> event
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Thrown when BrowserExtendedNavigatingEventArgs is null</exception>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.IWebBrowser2">
+            <summary>
+            IWebBrowser2
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.GoBack">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.GoForward">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.GoHome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.GoSearch">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.Navigate(System.String,System.Object@,System.Object@,System.Object@,System.Object@)">
+            <summary>
+            
+            </summary>
+            <param name="Url"></param>
+            <param name="flags"></param>
+            <param name="targetFrameName"></param>
+            <param name="postData"></param>
+            <param name="headers"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.Refresh">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.Refresh2(System.Object@)">
+            <summary>
+            
+            </summary>
+            <param name="level"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.Stop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Application">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Parent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Container">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Document">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.TopLevelContainer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Left">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Top">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Width">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Height">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.LocationName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.LocationURL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Busy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.Quit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.ClientToWindow(System.Int32@,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="pcx"></param>
+            <param name="pcy"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.PutProperty(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="property"></param>
+            <param name="vtValue"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.GetProperty(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="property"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.HWND">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.FullName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Path">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Visible">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.StatusBar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.StatusText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.ToolBar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.MenuBar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.FullScreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.Navigate2(System.Object@,System.Object@,System.Object@,System.Object@,System.Object@)">
+            <summary>
+            
+            </summary>
+            <param name="URL"></param>
+            <param name="flags"></param>
+            <param name="targetFrameName"></param>
+            <param name="postData"></param>
+            <param name="headers"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.QueryStatusWB(TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID)">
+            <summary>
+            
+            </summary>
+            <param name="cmdID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.ExecWB(TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID,TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDEXECOPT,System.Object@,System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="cmdID"></param>
+            <param name="cmdexecopt"></param>
+            <param name="pvaIn"></param>
+            <param name="pvaOut"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.IWebBrowser2.ShowBrowserBar(System.Object@,System.Object@,System.Object@)">
+            <summary>
+            
+            </summary>
+            <param name="pvaClsid"></param>
+            <param name="pvarShow"></param>
+            <param name="pvarSize"></param>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.ReadyState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Offline">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Silent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.RegisterAsBrowser">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.RegisterAsDropTarget">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.TheaterMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.AddressBar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.IWebBrowser2.Resizable">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.NativeMethods">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF.OLECMDF_DEFHIDEONCTXTMENU">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF.OLECMDF_ENABLED">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF.OLECMDF_INVISIBLE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF.OLECMDF_LATCHED">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF.OLECMDF_NINCHED">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDF.OLECMDF_SUPPORTED">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID.OLECMDID_PAGESETUP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID.OLECMDID_PRINT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID.OLECMDID_PRINTPREVIEW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID.OLECMDID_PROPERTIES">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDID.OLECMDID_SAVEAS">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDEXECOPT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDEXECOPT.OLECMDEXECOPT_DONTPROMPTUSER">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDEXECOPT.OLECMDEXECOPT_PROMPTUSER">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.NativeMethods.OLECMDEXECOPT.OLECMDEXECOPT_SHOWHELP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs.Url">
+            <summary>
+            The URL to navigate to
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs.Frame">
+            <summary>
+            The name of the frame to navigate to
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs.NavigationContext">
+            <summary>
+            The flags when opening a new window
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs.AutomationObject">
+            <summary>
+            The pointer to ppDisp
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.BrowserExtendedNavigatingEventArgs.#ctor(System.Object,System.Uri,System.String,TinyFx.Windows.WebBrowsers.UrlContext)">
+            <summary>
+            Creates a new instance of WebBrowserExtendedNavigatingEventArgs
+            </summary>
+            <param name="automation">Pointer to the automation object of the browser</param>
+            <param name="url">The URL to go to</param>
+            <param name="frame">The name of the frame</param>
+            <param name="navigationContext">The new window flags</param>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.UrlContext">
+            <summary>
+            Flags used by INewWindowManager::EvaluateNewWindow. 
+            These values are taken into account in the decision of whether to display a pop-up window.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.None">
+            <summary>
+            No information Present
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.Unloading">
+            <summary>
+            The page is unloading. This flag is set in response to the onbeforeunload and onunload events. 
+            Some pages load pop-up windows when you leave them rather than when you enter. This flag is used to identify those situations.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.UserInited">
+            <summary>
+            The call to INewWindowManager::EvaluateNewWindow is the result of a user-initiated action 
+            (a mouse click or key press). Use this flag in conjunction with the NWMF_FIRST_USERINITED flag 
+            to determine whether the call is a direct or indirect result of the user-initiated action.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.UserFirstInited">
+            <summary>
+            When NWMF_USERINITED is present, this flag indicates that the call to 
+            INewWindowManager::EvaluateNewWindow is the first query that results from this user-initiated action. 
+            Always use this flag in conjunction with NWMF_USERINITED.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.OverrideKey">
+            <summary>
+            The override key (ALT) was pressed. The override key is used to bypass the pop-up manager梐llowing 
+            all pop-up windows to display梐nd must be held down at the time that INewWindowManager::EvaluateNewWindow is called. 
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.ShowHelp">
+            <summary>
+            The new window attempting to load is the result of a call to the showHelp method. Help is sometimes displayed in a separate window, 
+            and this flag is valuable in those cases.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.HtmlDialog">
+            <summary>
+            The new window is a dialog box that displays HTML content.
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.UrlContext.FromProxy">
+            <summary>
+            Indicates that the EvaluateNewWindow method is being called through a marshalled Component Object Model (COM) proxy 
+            from another thread. In this situation, the method should make a decision and return immediately without performing 
+            blocking operations such as showing modal user interface (UI). Lengthy operations will cause the calling thread to 
+            appear unresponsive.
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.SpiderBrowser">
+            <summary>
+            网页蜘蛛抓取器
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.SpiderBrowser.Inited">
+            <summary>
+            是否初始化
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.GetImage">
+            <summary>
+            获取验证码图片
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.SpiderBrowser.ContainerForm">
+            <summary>
+            容器窗体
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.#ctor(System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="visible"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.Show(System.Boolean)">
+            <summary>
+            显示
+            </summary>
+            <param name="visible"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.Navigate(System.String)">
+            <summary>
+            导航
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.InvokeMember(System.String,System.String,System.Object[])">
+            <summary>
+            执行对象方法
+            </summary>
+            <param name="controlId"></param>
+            <param name="methodName"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.Focus(System.String)">
+            <summary>
+            获取焦点
+            </summary>
+            <param name="controlId"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.InputInnerText(System.String,System.String)">
+            <summary>
+            输入文本
+            </summary>
+            <param name="controlId"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.GetHTML(System.Collections.Generic.IEnumerable{TinyFx.Windows.WebBrowsers.HtmlCheckData},System.Action{System.String})">
+            <summary>
+            获取HTML
+            </summary>
+            <param name="checkData"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderBrowser.Dispose(System.Boolean)">
+            <summary>
+            释放资源
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.HtmlCheckData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.HtmlCheckData.Option">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.HtmlCheckData.Data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.HtmlCheckData.#ctor(TinyFx.Windows.WebBrowsers.HtmlCheckOption,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="option"></param>
+            <param name="data"></param>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.HtmlCheckOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.HtmlCheckOption.ContainsString">
+            <summary>
+            包含标识字符串
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.SpiderContainerForm">
+            <summary>
+            Spider容器窗口
+            </summary>
+        </member>
+        <member name="P:TinyFx.Windows.WebBrowsers.SpiderContainerForm.Browser">
+            <summary>
+            Browser
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.AddWebBrowser(System.Windows.Forms.WebBrowser)">
+            <summary>
+            添加WebBrowser控件
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.SetAddressText(System.String)">
+            <summary>
+            设置地址
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.SetText(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.SetStatusText(System.String)">
+            <summary>
+            设置状态文本
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="F:TinyFx.Windows.WebBrowsers.SpiderContainerForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderContainerForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.WebBrowsers.SpiderSilk">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.#ctor(System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="visible"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.Navigate(System.String)">
+            <summary>
+            页面导航
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.InvokeMember(System.String,System.String,System.Object[])">
+            <summary>
+            执行页面控件命令
+            </summary>
+            <param name="controlId"></param>
+            <param name="methodName"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.Focus(System.String)">
+            <summary>
+            指定控件获取焦点
+            </summary>
+            <param name="controlId"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.InputInnerText(System.String,System.String)">
+            <summary>
+            指定控件输入文本
+            </summary>
+            <param name="controlId"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.ClickControl(System.String)">
+            <summary>
+            指定控件触发点击事件
+            </summary>
+            <param name="controlId"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.GetHTML(System.Collections.Generic.IEnumerable{TinyFx.Windows.WebBrowsers.HtmlCheckData},System.Int32)">
+            <summary>
+            获取HTML
+            </summary>
+            <param name="checkData"></param>
+            <param name="waitMilliseconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.GetHTML(System.Int32)">
+            <summary>
+            获取HTML 
+            </summary>
+            <param name="waitMilliseconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.GetHTML(System.Collections.Generic.IEnumerable{TinyFx.Windows.WebBrowsers.HtmlCheckData})">
+            <summary>
+            获取HTML
+            </summary>
+            <param name="checkData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.GetHTML(TinyFx.Windows.WebBrowsers.HtmlCheckData[])">
+            <summary>
+            获取HTML
+            </summary>
+            <param name="checkData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.GetHTML(System.Int32,TinyFx.Windows.WebBrowsers.HtmlCheckData[])">
+            <summary>
+            获取HTML
+            </summary>
+            <param name="waitMilliseconds"></param>
+            <param name="checkData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WebBrowsers.SpiderSilk.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+    </members>
+</doc>

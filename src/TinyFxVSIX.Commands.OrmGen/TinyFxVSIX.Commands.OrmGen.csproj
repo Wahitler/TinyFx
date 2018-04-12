@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11FAE3B7-7A2C-4E4D-BFFE-74AB122BF7C1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TinyFxVSIX.Commands.OrmGen</RootNamespace>
+    <AssemblyName>TinyFxVSIX.Commands.OrmGen</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\TinyFxVSIX.Commands.OrmGen.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <CodeAnalysisRuleSet>..\..\tinyfx.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>TinyFx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Resources\packages\Microsoft.Data.ConnectionUI.Dialog\14.0\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Resources\packages\Microsoft.Data.ConnectionUI.Dialog\14.0\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\DBInfoControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\DBInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\DBInfoCtl.Designer.cs">
+      <DependentUpon>DBInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\DbInitCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\DbInitCtl.Designer.cs">
+      <DependentUpon>DbInitCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\IDBInfoRefresh.cs" />
+    <Compile Include="Forms\Controls\ListViews\DBOBaseListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\DBOBaseListView.Designer.cs">
+      <DependentUpon>DBOBaseListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\ProcsListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\ProcsListView.Designer.cs">
+      <DependentUpon>ProcsListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\TablesListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\TablesListView.Designer.cs">
+      <DependentUpon>TablesListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\ViewsListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ListViews\ViewsListView.Designer.cs">
+      <DependentUpon>ViewsListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\NoneDBOCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\NoneDBOCtl.Designer.cs">
+      <DependentUpon>NoneDBOCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ProcInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ProcInfoCtl.Designer.cs">
+      <DependentUpon>ProcInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ProcListInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ProcListInfoCtl.Designer.cs">
+      <DependentUpon>ProcListInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\TableInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\TableInfoCtl.Designer.cs">
+      <DependentUpon>TableInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\TableListInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\TableListInfoCtl.Designer.cs">
+      <DependentUpon>TableListInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ViewInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ViewInfoCtl.Designer.cs">
+      <DependentUpon>ViewInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ViewListInfoCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ViewListInfoCtl.Designer.cs">
+      <DependentUpon>ViewListInfoCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DBOInfoWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DBOInfoWindow.Designer.cs">
+      <DependentUpon>DBOInfoWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DBOList\ConnCustomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DBOList\ConnCustomForm.Designer.cs">
+      <DependentUpon>ConnCustomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DBOList\ConnFromConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DBOList\ConnFromConfigForm.Designer.cs">
+      <DependentUpon>ConnFromConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DBOList\DBOChangeEventArgs.cs" />
+    <Compile Include="Forms\DBOList\DBOListType.cs" />
+    <Compile Include="Forms\DBOList\DBOListWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DBOList\DBOListWindow.Designer.cs">
+      <DependentUpon>DBOListWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DBOList\DBONodeInfo.cs" />
+    <Compile Include="Forms\DBOList\DBOTreeNode.cs" />
+    <Compile Include="Forms\DBOList\OrmSettings.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MySqlClient\MySqlProcMOT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlProcMOT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MySqlClient\MySqlProcMOT.partial.cs" />
+    <Compile Include="Templates\MySqlClient\MySqlTableEOT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlTableEOT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MySqlClient\MySqlTableEOT.partial.cs" />
+    <Compile Include="Templates\MySqlClient\MySqlTableMOT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlTableMOT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MySqlClient\MySqlTableMOT.partial.cs" />
+    <Compile Include="Templates\MySqlClient\MySqlTemplateBase.cs" />
+    <Compile Include="Templates\MySqlClient\MySqlViewEOT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlViewEOT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MySqlClient\MySqlViewEOT.partial.cs" />
+    <Compile Include="Templates\MySqlClient\MySqlViewMOT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySqlViewMOT.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MySqlClient\MySqlViewMOT.partial.cs" />
+    <Compile Include="Templates\OrmGenProvider.cs" />
+    <Compile Include="Templates\OrmTemplateBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrmTemplateBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\OrmTemplateBase.partial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="TinyFx.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\DBInfoCtl.resx">
+      <DependentUpon>DBInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\DbInitCtl.resx">
+      <DependentUpon>DbInitCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\ListViews\DBOBaseListView.resx">
+      <DependentUpon>DBOBaseListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\NoneDBOCtl.resx">
+      <DependentUpon>NoneDBOCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\ProcInfoCtl.resx">
+      <DependentUpon>ProcInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\ProcListInfoCtl.resx">
+      <DependentUpon>ProcListInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\TableInfoCtl.resx">
+      <DependentUpon>TableInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\TableListInfoCtl.resx">
+      <DependentUpon>TableListInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\ViewInfoCtl.resx">
+      <DependentUpon>ViewInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\ViewListInfoCtl.resx">
+      <DependentUpon>ViewListInfoCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DBOInfoWindow.resx">
+      <DependentUpon>DBOInfoWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DBOList\ConnCustomForm.resx">
+      <DependentUpon>ConnCustomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DBOList\ConnFromConfigForm.resx">
+      <DependentUpon>ConnFromConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DBOList\DBOListWindow.resx">
+      <DependentUpon>DBOListWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\00037.png" />
+    <Content Include="Images\00040.png" />
+    <Content Include="Images\00048.png" />
+    <Content Include="Images\00746.png" />
+    <Content Include="Images\01119.png" />
+    <Content Include="Images\01331.png" />
+    <Content Include="Images\01334.png" />
+    <Content Include="Images\01335.png" />
+    <Content Include="Images\01347.png" />
+    <Content Include="Images\01374.png" />
+    <Content Include="Images\01380.png" />
+    <Content Include="Images\01572.png" />
+    <Content Include="Images\01581.png" />
+    <Content Include="Images\01582.png" />
+    <Content Include="Images\01583.png" />
+    <Content Include="Images\01584.png" />
+    <Content Include="Images\01666.png" />
+    <Content Include="Images\01832.png" />
+    <Content Include="Images\01912.png" />
+    <Content Include="Images\01936.png" />
+    <Content Include="Images\01964.png" />
+    <Content Include="Images\6812.png" />
+    <Content Include="Images\db.png" />
+    <Content Include="Images\db1.png" />
+    <Content Include="Images\dir.png" />
+    <Content Include="Images\exit.png" />
+    <Content Include="Images\info.png" />
+    <Content Include="Images\OrmGen.ico" />
+    <Content Include="Images\sp.png" />
+    <None Include="Images\splash.jpeg" />
+    <Content Include="Images\table.png" />
+    <Content Include="Images\view.png" />
+    <Content Include="Templates\MySqlClient\MySqlProcMOT.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlProcMOT.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MySqlClient\MySqlTableEOT.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlTableEOT.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MySqlClient\MySqlTableMOT.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlTableMOT.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MySqlClient\MySqlViewEOT.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlViewEOT.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MySqlClient\MySqlViewMOT.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MySqlViewMOT.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\OrmTemplateBase.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OrmTemplateBase.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinyFx.Framework\TinyFx.Framework.csproj">
+      <Project>{e71bc50d-945d-42f8-b5fd-f131476cc2e3}</Project>
+      <Name>TinyFx.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TinyFx.Windows\TinyFx.Windows.csproj">
+      <Project>{a9e8e419-697a-495a-af91-a60931f003e2}</Project>
+      <Name>TinyFx.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TinyFx\TinyFx.csproj">
+      <Project>{cc0cb213-9395-451f-b6b3-944802f60ae9}</Project>
+      <Name>TinyFx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DockPanelSuite">
+      <Version>2.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="EPPlus">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="jacobslusser.ScintillaNET">
+      <Version>3.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>6.10.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.Encoding">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.Primitives">
+      <Version>4.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,816 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TinyFxVSIX.Commands.OrmGen</name>
+    </assembly>
+    <members>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.AboutForm.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.AboutForm.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.AboutForm.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DBInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DBInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DBInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DbInitCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DbInitCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DbInitCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DBOBaseListView.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DBOBaseListView.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.DBOBaseListView.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcsListView.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcsListView.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcsListView.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TablesListView.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TablesListView.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TablesListView.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewsListView.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewsListView.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewsListView.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.NoneDBOCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.NoneDBOCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.NoneDBOCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcListInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcListInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ProcListInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TableInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TableInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TableInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TableListInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TableListInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.TableListInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewListInfoCtl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewListInfoCtl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.Controls.ViewListInfoCtl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOInfoWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.DBOInfoWindow.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.DBOInfoWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.ConnCustomForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.ConnCustomForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.ConnCustomForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Forms.DBConnectionResult">
+            <summary>
+            DBConnectionDialog所选择的结果
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Forms.DBConnectionResult.DataSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Forms.DBConnectionResult.DataProvider">
+            <summary>
+            数据提供程序
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Forms.DBConnectionResult.ConnectionString">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.ConnFromConfigForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.ConnFromConfigForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.ConnFromConfigForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType">
+            <summary>
+            DBO列表中选中项的类型
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.Database">
+            <summary>
+            数据库
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.Tables">
+            <summary>
+            表目录
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.Table">
+            <summary>
+             表
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.Views">
+            <summary>
+            视图目录
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.View">
+            <summary>
+            视图
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.Procs">
+            <summary>
+            存储过程目录
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListType.Proc">
+            <summary>
+            存储过程
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.Forms.DBOListWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.DBOListWindow.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Forms.DBOListWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Forms.DBONodeInfo">
+            <summary>
+            数据库节点信息
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Forms.DBOTreeNode.Data">
+            <summary>
+            当前Schema对象
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Forms.DBOTreeNode.OrmSettings">
+            <summary>
+            Orm代码生成设置
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.MainForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.MainForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.MainForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._00037">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._00040">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._00048">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._00746">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01119">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01331">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01334">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01335">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01347">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01374">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01380">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01572">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01581">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01582">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01583">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01584">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01666">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01832">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01912">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01936">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._01964">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources._6812">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.db">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.db1">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.dir">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.exit">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.info">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.OrmGen">
+            <summary>
+              查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.sp">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.splash">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.table">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Properties.Resources.view">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="F:TinyFxVSIX.Commands.OrmGen.SplashScreen.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.SplashScreen.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.SplashScreen.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlProcMOT">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlProcMOT.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlTableEOT">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlTableEOT.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlTableMOT">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlTableMOT.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlTableMOT.GetMutilFieldsInUniqueAndFK">
+            <summary>
+            获取唯一索引并且多字段和外键并且多字段的集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlViewEOT">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlViewEOT.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlViewMOT">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.MySqlClient.MySqlViewMOT.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmSqlFieldsLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            获取SQL语句中字段集合：UserID, UserName ....
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmSqlParamsLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            获取SQL语句中字段参数集合: @UserID, @UserName
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmSqlWhereLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema},System.Boolean)">
+            <summary>
+            获取 Where 条件列表：'userID' = @UserID AND 'userName' = @UserName
+            </summary>
+            <param name="columns"></param>
+            <param name="hasOriginal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmSqlSetLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            SQL语句Update Set语句：UserID = @UserID, UserName = @UserName
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmItemValueLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            获取Item对象属性列表：item.UserID, item.UserName
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmMethodParamsLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            获取方法参数列表：int userID, string userName
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetOrmPropertyAndLink(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            获取对象属性名And连接: UserIDAndUserName
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBase.GetMOSetCheckList(System.Collections.Generic.IEnumerable{TinyFx.Data.Schema.ColumnSchema})">
+            <summary>
+            MO Set方法中的判断：item.UserID == default(int) || item.UserName == default(string)
+            </summary>
+            <param name="columns"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:TinyFxVSIX.Commands.OrmGen.Templates.OrmTemplateBaseBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+    </members>
+</doc>

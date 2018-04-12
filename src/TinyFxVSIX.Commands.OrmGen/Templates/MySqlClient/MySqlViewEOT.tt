@@ -1,0 +1,55 @@
+﻿<#@ template language="C#" inherits="MySqlTemplateBase"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TinyFx.Data.MySqlClient" #>
+/// <summary>
+/// <#= ClassComment(CurrentView) #>
+/// 【视图 <#= CurrentView.ViewName #> 的实体类】
+/// </summary>
+[Serializable]
+public class <#= EOName #> : IRowMapper<<#= EOName #>>
+{
+	#region 所有字段
+<# foreach (var column in CurrentView.Columns) {  
+		string propertyName = column.OrmPropertyName;
+#>
+	/// <summary>
+	/// <#= PropertyComment(column) #>
+	/// 【<#= column.OrmColumnTypeString #> <#= column.EngineTypeStringFull #>】
+	/// </summary>
+	public <#= column.DotNetTypeString #> <#= propertyName #> { get; set; }
+<# } #>
+	#endregion // 所有列
+
+	#region 实体映射
+	
+	/// <summary>
+	/// 将IDataReader映射成实体对象
+	/// </summary>
+	/// <param name = "reader">只进结果集流</param>
+	/// <return>实体对象</return>
+	public <#= EOName #> MapRow(IDataReader reader)
+	{
+		return MapDataReader(reader);
+	}
+	
+	/// <summary>
+	/// 将IDataReader映射成实体对象
+	/// </summary>
+	/// <param name = "reader">只进结果集流</param>
+	/// <return>实体对象</return>
+	public static <#= EOName #> MapDataReader(IDataReader reader)
+	{
+	    <#= EOName #> ret = new <#= EOName #>();
+<# foreach (var column in CurrentView.Columns) {
+		string propertyName = column.OrmPropertyName;
+#>
+		ret.<#= propertyName #> = reader.<#= column.OrmReaderMethodName #>("<#= column.ColumnName #>");
+<#	} #>
+	    return ret;
+	}
+	
+	#endregion
+}

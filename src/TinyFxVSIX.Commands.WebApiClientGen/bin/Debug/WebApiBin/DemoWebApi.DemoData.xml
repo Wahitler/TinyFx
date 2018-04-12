@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DemoWebApi.DemoData</name>
+    </assembly>
+    <members>
+        <member name="F:DemoWebApi.DemoData.Days.Thu">
+            <summary>
+            Thursday
+            </summary>
+        </member>
+        <member name="T:DemoWebApi.DemoData.PhoneType">
+            <summary>
+            Phone type
+            Tel, Mobile, Skyp and Fax
+            
+            </summary>
+        </member>
+        <member name="F:DemoWebApi.DemoData.PhoneType.Tel">
+            <summary>
+            Land line
+            </summary>
+        </member>
+        <member name="F:DemoWebApi.DemoData.PhoneType.Mobile">
+            <summary>
+            Mobile phone
+            </summary>
+        </member>
+        <member name="P:DemoWebApi.DemoData.Address.EntityId">
+            <summary>
+            Foreign key to Entity
+            </summary>
+        </member>
+        <member name="T:DemoWebApi.DemoData.Entity">
+            <summary>
+            Base class of company and person
+            </summary>
+        </member>
+        <member name="P:DemoWebApi.DemoData.Entity.Name">
+            <summary>
+            Name of the entity.
+            </summary>
+        </member>
+        <member name="P:DemoWebApi.DemoData.Entity.Addresses">
+            <summary>
+            Multiple addresses
+            </summary>
+        </member>
+        <member name="P:DemoWebApi.DemoData.Person.DOB">
+            <summary>
+            Date of Birth.
+            This is optional.
+            </summary>
+        </member>
+        <member name="P:DemoWebApi.DemoData.Company.BusinessNumber">
+            <summary>
+            BusinessNumber to be serialized as BusinessNum
+            </summary>
+        </member>
+        <member name="T:DemoWebApi.DemoData.Another.MyPoint">
+            <summary>
+            2D position
+                    with X and Y
+            for Demo
+            </summary>
+        </member>
+        <member name="F:DemoWebApi.DemoData.Another.MyPoint.X">
+            <summary>
+            X
+            </summary>
+        </member>
+        <member name="F:DemoWebApi.DemoData.Another.MyPoint.Y">
+            <summary>
+            Y
+            </summary>
+        </member>
+    </members>
+</doc>

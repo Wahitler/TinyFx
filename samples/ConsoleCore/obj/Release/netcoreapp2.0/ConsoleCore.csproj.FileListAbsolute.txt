@@ -1,0 +1,15 @@
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\ConsoleCore.deps.json
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\ConsoleCore.runtimeconfig.json
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\ConsoleCore.runtimeconfig.dev.json
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\ConsoleCore.dll
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\ConsoleCore.pdb
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\TinyFx.Core.dll
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\TinyFx.dll
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\TinyFx.Core.pdb
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\TinyFx.pdb
+D:\TinyFx\develop\samples\ConsoleCore\bin\Release\netcoreapp2.0\TinyFx.xml
+D:\TinyFx\develop\samples\ConsoleCore\obj\Release\netcoreapp2.0\ConsoleCore.csprojResolveAssemblyReference.cache
+D:\TinyFx\develop\samples\ConsoleCore\obj\Release\netcoreapp2.0\ConsoleCore.csproj.CoreCompileInputs.cache
+D:\TinyFx\develop\samples\ConsoleCore\obj\Release\netcoreapp2.0\ConsoleCore.AssemblyInfo.cs
+D:\TinyFx\develop\samples\ConsoleCore\obj\Release\netcoreapp2.0\ConsoleCore.dll
+D:\TinyFx\develop\samples\ConsoleCore\obj\Release\netcoreapp2.0\ConsoleCore.pdb

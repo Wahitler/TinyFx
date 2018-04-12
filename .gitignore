@@ -3,3 +3,9 @@
 ################################################################################
 
 /CommonAdmin
+/packages
+/docs
+/resources
+/libs
+/CommonAdmin.sln
+/.vs

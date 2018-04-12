@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ActiveX测试页面</title>
+</head>
+<body>
+    <h1>ActiveX测试</h1>
+    <object id="demo1" classid='clsid:7135A5E0-CE78-4A0B-82F9-0966FEF5016A' width="0" height="0" codebase="TinyFxActiveX.CAB#version=1,1"></object>
+    <object id="demo2" classid='clsid:41CCC939-0BDB-4838-93F3-2E6072B81922' width="300" height="150" codebase="TinyFxActiveX.CAB#version=1,1"></object>
+    <input id="Button1" type="button" value="GetMacAddress" onclick="GetMacAddress();" />
+    <input id="Button1" type="button" value="ShowForm" onclick="ShowForm();" />
+    <input id="Button1" type="button" value="GetString" onclick="GetString();" />
+    <script type="text/javascript">
+        function GetMacAddress() {
+            var obj = document.getElementById('demo1');
+            alert(obj.GetMacAddress());
+        }
+        function ShowForm() {
+            var obj = document.getElementById('demo1');
+            obj.ShowForm();
+        }
+        function GetString() {
+            var obj = document.getElementById('demo2');
+            alert(obj.GetString());
+        }
+    </script>
+</body>
+</html>

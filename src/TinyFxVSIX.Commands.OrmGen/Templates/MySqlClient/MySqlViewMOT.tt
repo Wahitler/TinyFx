@@ -1,0 +1,133 @@
+﻿<#@ template language="C#" inherits="MySqlTemplateBase"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TinyFx.Data.MySqlClient" #>
+<#@ import namespace="TinyFx.Data.Schema" #>
+/// <summary>
+/// <#= ClassComment(CurrentView) #>
+/// 【视图 <#= CurrentView.ViewName #> 的操作类】
+/// </summary>
+public class <#= MOName #> : MySqlViewMO<<#= EOName #>>
+{
+    public override string ViewName => "<#= CurrentView.SqlViewName #>"; 
+
+<#	/**************************** 构造函数 ************************************/ #>
+	#region Constructors
+	/// <summary>
+	/// 构造函数
+	/// </summary>
+	/// <param name = "database">数据来源</param>
+	public <#= MOName #>(MySqlDatabase database) : base(database) { }
+
+	/// <summary>
+	/// 构造函数
+	/// </summary>
+	/// <param name = "connectionStringName">配置文件.config中定义的连接字符串名称</param>
+	public <#= MOName #>(string connectionStringName = null) : base(connectionStringName) { }
+
+    /// <summary>
+    /// 构造函数
+    /// </summary>
+    /// <param name="connectionString">数据库连接字符串，如server=192.168.1.1;database=testdb;uid=root;pwd=root</param>
+    /// <param name="commandTimeout">CommandTimeout时间</param>
+    public <#= MOName #>(string connectionString, int commandTimeout) : base(connectionString, commandTimeout) { }
+	#endregion // Constructors
+
+<#	/**************************** 查询 ************************************/ #>
+	#region Get
+
+<#	foreach(var column in CurrentView.Columns) { 
+			string propertyName = column.OrmPropertyName;
+			string parameterName = column.OrmParamName;
+#>
+	#region GetBy<#= propertyName #>
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#= propertyName #>(<#= GetOrmMethodParamsLink(column) #>)
+	{
+		return GetBy<#= propertyName #>(<#= parameterName #>, 0, string.Empty, null);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#=GetOrmMethodParamsLink(column)#>, TransactionManager tm_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, 0, string.Empty, tm_);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "top_">获取行数</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#=GetOrmMethodParamsLink(column)#>, int top_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, top_, string.Empty, null);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "top_">获取行数</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, int top_, TransactionManager tm_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, top_, string.Empty, tm_);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "sort_">排序表达式</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, string sort_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, 0, sort_, null);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "sort_">排序表达式</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, string sort_, TransactionManager tm_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, 0, sort_, tm_);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "top_">获取行数</param>
+	/// <param name = "sort_">排序表达式</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, int top_, string sort_, TransactionManager tm_)
+	{
+		var sql_ = BuildSelectSQL("<#=  GetOrmSqlWhereLink(column)#>", top_, sort_);
+		var parameter_ = Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>);
+		return Database.ExecSqlList(sql_, new MySqlParameter[] { parameter_ }, tm_, <#= EOName #>.MapDataReader);
+	}
+	#endregion // GetBy<#= propertyName #>
+
+<#	} #>
+
+	#endregion // Get
+}

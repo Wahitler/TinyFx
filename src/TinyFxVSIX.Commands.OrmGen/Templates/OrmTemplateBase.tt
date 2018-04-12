@@ -1,0 +1,56 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#+ 
+// 导入版权信息 **********************************************************************************************************
+public void ImportCopyright()
+{
+#>
+/******************************************************
+ * 此代码由代码生成器工具自动生成，请不要修改
+ * 代码生成器核心库版本号：2.0 by JiangHui 2016-06-20
+ * 创建时间：<#= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") #>
+ ******************************************************/
+<#+
+}
+// 导入引用 ******************************************************************************************************************
+public void ImportUsings(List<string> namespaces)
+{
+#>
+using System;
+using System.Data;
+using System.Data.Common;
+using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Security.Permissions;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Text;
+using TinyFx;
+using TinyFx.Data;
+using TinyFx.Data.ORM;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+<#+
+	foreach(var item in namespaces)
+    {
+#>
+using <#= item #>;
+<#+
+    }
+}
+// 内容添加Namespace *********************************************************************************************************
+public void AddNamespace1(string content, string namespaceName)
+{
+#>
+namespace <#= namespaceName #>
+{
+<#= content #>
+}
+<#+
+}
+#>

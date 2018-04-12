@@ -1,0 +1,501 @@
+﻿<#@ template language="C#" inherits="MySqlTemplateBase"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TinyFx.Data.MySqlClient" #>
+<#@ import namespace="TinyFx.Data.Schema" #>
+/// <summary>
+/// <#= ClassComment(CurrentTable) #>
+/// 【表 <#= CurrentTable.TableName #> 的操作类】
+/// </summary>
+public class <#= MOName #> : MySqlTableMO<<#= EOName #>>
+{
+    public override string TableName => "<#= CurrentTable.SqlTableName #>"; 
+
+<#	/**************************** 构造函数 ************************************/ #>
+	#region Constructors
+	/// <summary>
+	/// 构造函数
+	/// </summary>
+	/// <param name = "database">数据来源</param>
+	public <#= MOName #>(MySqlDatabase database) : base(database) { }
+
+	/// <summary>
+	/// 构造函数
+	/// </summary>
+	/// <param name = "connectionStringName">配置文件.config中定义的连接字符串名称</param>
+	public <#= MOName #>(string connectionStringName = null) : base(connectionStringName) { }
+
+    /// <summary>
+    /// 构造函数
+    /// </summary>
+    /// <param name="connectionString">数据库连接字符串，如server=192.168.1.1;database=testdb;uid=root;pwd=root</param>
+    /// <param name="commandTimeout">CommandTimeout时间</param>
+    public <#= MOName #>(string connectionString, int commandTimeout) : base(connectionString, commandTimeout) { }
+	#endregion // Constructors
+
+<#	/**************************** 新增 ************************************/ #>
+    #region  Add
+	/// <summary>
+	/// 插入数据
+	/// </summary>
+	/// <param name = "item">要插入的实体对象</param>
+	/// <param name="tm">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public override int Add(<#= EOName #> item, TransactionManager tm = null)
+	{
+		const string sql = @"INSERT INTO <#= CurrentTable.SqlTableName #> (<#= GetOrmSqlFieldsLink(CurrentTable, ColumnSelectMode.NoAutoIncrement) #>) VALUE (<#= GetOrmSqlParamsLink(CurrentTable, ColumnSelectMode.NoAutoIncrement) #>);<# if (CurrentTable.HasAutoIncrementColumn){ #>SELECT LAST_INSERT_ID();<# } #>";
+		var paras = new List<MySqlParameter>() 
+		{
+<#	foreach(var item in CurrentTable.Columns){ if (item.IsAutoIncrement) continue; #>
+			Database.CreateInParameter("<#= item.SqlParamName #>", <#= item.OrmItemValueToDbCode #>, <#= ((MySqlColumnSchema)item).DbTypeString #>),
+<#	} #>
+		};
+<#	if (CurrentTable.HasAutoIncrementColumn){ var column = CurrentTable.AutoIncrementColumn; #>
+		item.<#= column.OrmPropertyName #> = Database.ExecSqlScalar<<#= column.DotNetTypeString.TrimEnd('?') #>>(sql, paras, tm); 
+<#	} else { #>
+		Database.ExecSqlNonQuery(sql, paras, tm); 
+<#	} #>
+        return 1;
+	}
+    
+    #endregion // Add
+    
+<#	/**************************** 删除 ************************************/ #>
+	#region  Remove
+<#	if (CurrentTable.HasPrimaryKey){ #>
+	
+	#region RemoveByPK
+	/// <summary>
+	/// 按主键删除
+	/// </summary>
+<#		foreach (var column in CurrentTable.PrimaryKey.Columns) { #>
+	/// <#= ParamComment(column) #>
+<#		} #>
+	/// <param name="tm_">事务管理对象</param>
+	public int RemoveByPK(<#= GetOrmMethodParamsLink(CurrentTable.PrimaryKey.Columns) #>, TransactionManager tm_ = null)
+	{
+		const string sql_ = @"DELETE FROM <#= CurrentTable.SqlTableName #> WHERE <#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns) #>";
+		var paras_ = new List<MySqlParameter>() 
+		{
+<#		foreach(var column in CurrentTable.PrimaryKey.Columns){ #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#		} #>
+		};
+		return Database.ExecSqlNonQuery(sql_, paras_, tm_);
+	}
+	
+	/// <summary>
+	/// 删除指定实体对应的记录
+	/// </summary>
+	/// <param name = "item">要删除的实体</param>
+	/// <param name="tm">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public int Remove(<#= EOName #> item, TransactionManager tm = null)
+	{
+		return RemoveByPK(<#= GetOrmItemValueLink(CurrentTable.PrimaryKey.Columns) #>, tm);
+	}
+	#endregion // RemoveByPK
+<#	} #>
+	
+	#region RemoveByXXX
+
+<#	foreach(var column in CurrentTable.ColumnsFilter(ColumnSelectMode.NoOnePK)){ #>
+	#region RemoveBy<#=column.OrmPropertyName#>
+	/// <summary>
+	/// 按字段删除
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name="tm_">事务管理对象</param>
+	public int RemoveBy<#=column.OrmPropertyName#>(<#=GetOrmMethodParamsLink(column)#>, TransactionManager tm_ = null)
+	{
+		string sql_ = @"DELETE FROM <#= CurrentTable.SqlTableName #> WHERE <#= GetOrmSqlWhereContent(column) #>;
+		var paras_ = new List<MySqlParameter>();
+		<#= GetOrmSqlWhereIF(column) #>paras_.Add(Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValue #>, <#= ((MySqlColumnSchema)column).DbTypeString #>));
+		return Database.ExecSqlNonQuery(sql_, paras_, tm_);
+	}
+	#endregion // RemoveBy<#=column.OrmPropertyName#>
+
+<#	} #>
+	#endregion // RemoveByXXX
+
+	#region RemoveByFKOrUnique
+
+<#	foreach(var columns in GetMutilFieldsInUniqueAndFK()){ #>
+	#region RemoveBy<#= GetOrmPropertyAndLink(columns) #>
+	/// <summary>
+	/// 按字段删除
+	/// </summary>
+<#		foreach(var column in columns){ #>
+	/// <#= ParamComment(column) #>
+<#		} #>
+	/// <param name="tm_">事务管理对象</param>
+	public int RemoveBy<#= GetOrmPropertyAndLink(columns) #>(<#= GetOrmMethodParamsLink(columns) #>, TransactionManager tm_ = null)
+	{
+		const string sql_ = @"DELETE FROM <#= CurrentTable.SqlTableName #> WHERE <#= GetOrmSqlWhereLink(columns) #>";
+		var paras_ = new List<MySqlParameter>() 
+		{
+<#		foreach(var column in columns){ #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#		} #>
+		};
+		return Database.ExecSqlNonQuery(sql_, paras_, tm_);
+	}
+	#endregion // RemoveBy<#= GetOrmPropertyAndLink(columns) #>
+
+<#	} #>
+	#endregion // RemoveByFKOrUnique
+
+	#endregion //Remove
+
+<#	/**************************** 修改 ************************************/ #>
+	#region Put
+
+<#	if (CurrentTable.HasPrimaryKey) { #>
+	#region PutItem
+	/// <summary>
+	/// 更新实体到数据库
+	/// </summary>
+	/// <param name = "item">要更新的实体对象</param>
+	/// <param name="tm">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public int Put(<#= EOName #> item, TransactionManager tm = null)
+	{
+		const string sql = @"UPDATE <#= CurrentTable.SqlTableName #> SET <#= GetOrmSqlSetLink(CurrentTable, ColumnSelectMode.CanInsertAndUpdate) #> WHERE <#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns, true) #>";
+		var paras = new List<MySqlParameter>() 
+		{
+<#		foreach(var column in  CurrentTable.ColumnsFilter(ColumnSelectMode.CanInsertAndUpdate)) { #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmItemValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#		} #>
+<#		foreach(var column in  CurrentTable.PrimaryKey.Columns) { #>
+			Database.CreateInParameter("<#= column.SqlParamName #>_Original", item.HasOriginal ? item.Original<#= column.OrmPropertyName #> : item.<#= column.OrmPropertyName #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#		} #>
+		};
+		return Database.ExecSqlNonQuery(sql, paras, tm);
+	}
+	
+	/// <summary>
+	/// 更新实体集合到数据库
+	/// </summary>
+	/// <param name = "items">要更新的实体对象集合</param>
+	/// <param name="tm">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public int Put(IEnumerable<<#= EOName #>> items, TransactionManager tm = null)
+	{
+		int ret = 0;
+		foreach (var item in items)
+		{
+	        ret += Put(item, tm);
+		}
+		return ret;
+	}
+	#endregion // PutItem
+
+	#region PutByPK
+
+	/// <summary>
+	/// 按主键更新指定列数据
+	/// </summary>
+<#			foreach(var colPK in CurrentTable.PrimaryKey.Columns){ #>
+	/// <#= ParamComment(colPK) #>
+<#			} #>
+	/// <param name = "set_">更新的列数据</param>
+	/// <param name="values_">参数值</param>
+	/// <return>受影响的行数</return>
+	public int PutByPK(<#= GetOrmMethodParamsLink(CurrentTable.PrimaryKey.Columns) #>, string set_, params object[] values_)
+	{
+		return Put(set_, "<#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns) #>", ConcatValues(values_, <#= GetOrmMethodParamsValueLink(CurrentTable.PrimaryKey.Columns) #>));
+	}
+	/// <summary>
+	/// 按主键更新指定列数据
+	/// </summary>
+<#			foreach(var colPK in CurrentTable.PrimaryKey.Columns){ #>
+	/// <#= ParamComment(colPK) #>
+<#			} #>
+	/// <param name = "set_">更新的列数据</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <param name="values_">参数值</param>
+	/// <return>受影响的行数</return>
+	public int PutByPK(<#= GetOrmMethodParamsLink(CurrentTable.PrimaryKey.Columns) #>, string set_, TransactionManager tm_, params object[] values_)
+	{
+		return Put(set_, "<#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns) #>", tm_, ConcatValues(values_, <#= GetOrmMethodParamsValueLink(CurrentTable.PrimaryKey.Columns) #>));
+	}
+	/// <summary>
+	/// 按主键更新指定列数据
+	/// </summary>
+<#			foreach(var colPK in CurrentTable.PrimaryKey.Columns){ #>
+	/// <#= ParamComment(colPK) #>
+<#			} #>
+	/// <param name = "set_">更新的列数据</param>
+	/// <param name="paras_">参数值</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public int PutByPK(<#= GetOrmMethodParamsLink(CurrentTable.PrimaryKey.Columns) #>, string set_, IEnumerable<MySqlParameter> paras_, TransactionManager tm_ = null)
+	{
+		var newParas_ = new List<MySqlParameter>() {
+<#		foreach(var column in CurrentTable.PrimaryKey.Columns){ #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#		} #>
+        };
+		return Put(set_, "<#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns) #>", ConcatParameters(paras_, newParas_), tm_);
+	}
+	#endregion // PutByPK
+<#	} #>
+	
+	#region PutXXX
+
+<#	foreach(var column in CurrentTable.Columns) { 
+		if (column.IsAutoIncrement) continue; 
+		if (column.IsSinglePKColumn) continue;
+#>
+	#region Put<#= column.OrmPropertyName#>
+<#		if (CurrentTable.HasPrimaryKey && !column.IsPrimaryKey) { #>
+	/// <summary>
+	/// 按主键更新列数据
+	/// </summary>
+<#			foreach(var colPK in CurrentTable.PrimaryKey.Columns){ #>
+	/// <#= ParamComment(colPK) #>
+<#			} #>
+	/// <#= ParamComment(column) #>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public int Put<#= column.OrmPropertyName #>ByPK(<#= GetOrmMethodParamsLink(CurrentTable.PrimaryKey.Columns) #>, <#= GetOrmMethodParamsLink(column) #>, TransactionManager tm_ = null)
+	{
+		const string sql_ = @"UPDATE <#= CurrentTable.SqlTableName #> SET <#= GetOrmSqlSetLink(column)#>  WHERE <#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns) #>";
+		var paras_ = new List<MySqlParameter>() 
+		{
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#			foreach(var colPK in  CurrentTable.PrimaryKey.Columns) { #>
+			Database.CreateInParameter("<#= colPK.SqlParamName #>", <#= colPK.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)colPK).DbTypeString #>),
+<#			} #>
+		};
+		return Database.ExecSqlNonQuery(sql_, paras_, tm_);
+	}
+<#		} #> 
+	/// <summary>
+	/// 更新一列数据
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>受影响的行数</return>
+	public int Put<#= column.OrmPropertyName #>(<#= GetOrmMethodParamsLink(column) #>, TransactionManager tm_ = null)
+	{
+		const string sql_ = @"UPDATE <#= CurrentTable.SqlTableName #> SET <#= GetOrmSqlSetLink(column)#>";
+		var parameter_ = Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>);
+		return Database.ExecSqlNonQuery(sql_, new MySqlParameter[] { parameter_ }, tm_);
+	}
+	#endregion // Put<#= column.OrmPropertyName#>
+
+<#	} #>
+	#endregion // PutXXX
+	
+	#endregion // Put
+   
+<#	/**************************** 修改或新增 ************************************/ #>
+<#	if (CurrentTable.HasPrimaryKey) { #>
+	#region Set
+	
+	/// <summary>
+	/// 插入或者更新数据
+	/// </summary>
+	/// <param name = "item">要更新的实体对象</param>
+	/// <param name="tm">事务管理对象</param>
+	/// <return>true:插入操作；false:更新操作</return>
+	public bool Set(<#= EOName #> item, TransactionManager tm = null)
+	{
+		bool ret = true;
+		if(GetByPK(<#= GetOrmItemValueLink(CurrentTable.PrimaryKey.Columns) #>) == null)
+		{
+			Add(item, tm);
+		}
+		else
+		{
+			Put(item, tm);
+			ret = false;
+		}
+		return ret;
+	}
+	
+	#endregion // Set
+<#	} #>
+	
+<#	/**************************** 查询 ************************************/ #>
+	#region Get
+
+<#	if (CurrentTable.HasPrimaryKey) { #>
+	#region GetByPK
+	/// <summary>
+	/// 按 PK（主键） 查询
+	/// </summary>
+<#		foreach (var column in CurrentTable.PrimaryKey.Columns) { #>
+	/// <#= ParamComment(column) #>
+<#		} #>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return></return>
+	public <#= EOName #> GetByPK(<#= GetOrmMethodParamsLink(CurrentTable.PrimaryKey.Columns) #>, TransactionManager tm_ = null)
+	{
+		var sql_ = BuildSelectSQL("<#= GetOrmSqlWhereLink(CurrentTable.PrimaryKey.Columns) #>", 0, null);
+		var paras_ = new List<MySqlParameter>() 
+		{
+<#		foreach(var column in CurrentTable.PrimaryKey.Columns){ #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#		} #>
+		};
+		return Database.ExecSqlSingle(sql_, paras_, tm_, <#= EOName #>.MapDataReader);
+	}
+	#endregion // GetByPK
+<#	} #>
+	
+<#	if (CurrentTable.HasUniqueIndex) {#>
+	#region GetByUnique
+<#		foreach (var index in CurrentTable.Indexes) {
+			if (!index.IsUnique || index.IsPrimaryKey) continue;
+#>
+	/// <summary>
+	/// 按【唯一索引】查询
+	/// </summary>
+<#			foreach(var column in index.Columns){ #>
+	/// <#= ParamComment(column) #>
+<#			} #>
+	/// <param name="tm_">事务管理对象</param>
+	public <#= EOName #> GetBy<#= GetOrmPropertyAndLink(index.Columns) #>(<#= GetOrmMethodParamsLink(index.Columns) #>, TransactionManager tm_ = null)
+	{
+		var sql_ = BuildSelectSQL("<#= GetOrmSqlWhereLink(index.Columns) #>", 0, null);
+		var paras_ = new List<MySqlParameter>() 
+		{
+<#			foreach(var column in index.Columns){ #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#			} #>
+		};
+		return Database.ExecSqlSingle(sql_, paras_, tm_, <#= EOName #>.MapDataReader);
+	}
+
+<#		} #>
+	#endregion // GetByUnique
+<#	} #>
+
+<# if (CurrentTable.HasForeignKey) {#>
+	#region GetByFK
+
+<#		foreach (var fk in CurrentTable.ForeignKeys) { if (fk.Columns.Count == 1) continue; #>
+	/// <summary>
+	/// 按【外键】查询
+	/// </summary>
+<#			foreach(var column in fk.Columns){ #>
+	/// <#= ParamComment(column) #>
+<#			} #>
+	/// <param name="tm_">事务管理对象</param>
+	public List<<#= EOName #>> GetBy<#= GetOrmPropertyAndLink(fk.Columns) #>(<#= GetOrmMethodParamsLink(fk.Columns) #>, TransactionManager tm_ = null)
+	{
+		var sql_ = BuildSelectSQL("<#= GetOrmSqlWhereLink(fk.Columns) #>", 0, null);
+		var paras_ = new List<MySqlParameter>() 
+		{
+<#			foreach(var column in fk.Columns){ #>
+			Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValueToDbCode #>, <#= ((MySqlColumnSchema)column).DbTypeString #>),
+<#			} #>
+		};
+		return Database.ExecSqlList(sql_, paras_, tm_, <#= EOName #>.MapDataReader);
+	}
+<#		} #>
+	#endregion // GetByFK
+<#	} #>
+
+	#region GetByXXX
+
+<#	foreach(var column in CurrentTable.Columns) { 
+			if (column.IsSinglePKColumn || column.IsSingleUniqueColumn) continue;
+			string propertyName = column.OrmPropertyName;
+			string parameterName = column.OrmParamName;
+#>
+	#region GetBy<#= propertyName #>
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#= propertyName #>(<#= GetOrmMethodParamsLink(column) #>)
+	{
+		return GetBy<#= propertyName #>(<#= parameterName #>, 0, string.Empty, null);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#=GetOrmMethodParamsLink(column)#>, TransactionManager tm_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, 0, string.Empty, tm_);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "top_">获取行数</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#=GetOrmMethodParamsLink(column)#>, int top_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, top_, string.Empty, null);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "top_">获取行数</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, int top_, TransactionManager tm_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, top_, string.Empty, tm_);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "sort_">排序表达式</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, string sort_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, 0, sort_, null);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "sort_">排序表达式</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, string sort_, TransactionManager tm_)
+	{
+		return GetBy<#=propertyName#>(<#=parameterName#>, 0, sort_, tm_);
+	}
+	
+	/// <summary>
+	/// 按 <#= column.ColumnName #>（字段） 查询
+	/// </summary>
+	/// <#= ParamComment(column) #>
+	/// <param name = "top_">获取行数</param>
+	/// <param name = "sort_">排序表达式</param>
+	/// <param name="tm_">事务管理对象</param>
+	/// <return>实体对象集合</return>
+	public List<<#= EOName #>> GetBy<#=propertyName#>(<#= GetOrmMethodParamsLink(column) #>, int top_, string sort_, TransactionManager tm_)
+	{
+		var sql_ = BuildSelectSQL(<#= GetOrmSqlWhereContent(column, true)#>, top_, sort_);
+		var paras_ = new List<MySqlParameter>();
+		<#= GetOrmSqlWhereIF(column) #>paras_.Add(Database.CreateInParameter("<#= column.SqlParamName #>", <#= column.OrmParamValue #>, <#= ((MySqlColumnSchema)column).DbTypeString #>));
+		return Database.ExecSqlList(sql_, paras_, tm_, <#= EOName #>.MapDataReader);
+	}
+	#endregion // GetBy<#= propertyName #>
+
+<#	} #>
+	#endregion // GetByXXX
+
+	#endregion // Get
+}

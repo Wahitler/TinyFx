@@ -1,0 +1,97 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>tinyfx.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\TinyFx.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;1591</NoWarn>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="EntLib\ChinaArea\ChinaAreaData.7z" />
+    <None Remove="EntLib\DirtyStringFilter\DirtyStringFilter.dic.20160817.7z" />
+    <None Remove="EntLib\Pinyin\PinyinDB.7z" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="EntLib\ChinaArea\ChinaAreaData.7z" />
+    <EmbeddedResource Include="EntLib\DirtyStringFilter\DirtyStringFilter.dic.20160817.7z" />
+    <EmbeddedResource Include="EntLib\Pinyin\PinyinDB.7z" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="CsvHelper" Version="2.16.3" />
+    <PackageReference Include="EPPlus" Version="4.5.1" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.2.0" />
+    <PackageReference Include="MySql.Data" Version="6.10.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="protobuf-net" Version="2.3.7" />
+    <PackageReference Include="Shaman.SevenZipSharp" Version="1.0.6.3" />
+    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EntLib\IPLocator\17monipdb.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\BigramDict.dct">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\coreDict.dct">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\coreDictNew.dct">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\engstopwords.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\lexical.ctx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\log.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\nr.ctx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\nr.dct">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\ns.ctx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\ns.dct">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\Readme.TXT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\stopwords.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\tr.ctx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EntLib\SharpICTCLAS\Data\tr.dct">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Extensions\SevenZipSharp\7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Extensions\SevenZipSharp\7z64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

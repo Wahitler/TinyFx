@@ -1,0 +1,2064 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TinyFx.Framework</name>
+    </assembly>
+    <members>
+        <member name="T:TinyFx.AspNet.ServerHeaderRemoveModule">
+            <summary>
+            移除ServerHeader
+            </summary>
+        </member>
+        <member name="T:TinyFx.AspNet.VirtualPath.EmbeddedCacheControl">
+            <summary>
+            缓存控制类
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedCacheControl.MaxAge">
+            <summary>
+            缓存期
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedCacheControl.Cacheability">
+            <summary>
+            Cache-Control HTTP标头枚举值
+            </summary>
+        </member>
+        <member name="T:TinyFx.AspNet.VirtualPath.EmbeddedContext">
+            <summary>
+            嵌入资源上下文，包含静态资源和动态资源
+            </summary>
+        </member>
+        <member name="F:TinyFx.AspNet.VirtualPath.EmbeddedContext.VIRTUAL_PATH_CONTEXT_KEY">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedContext.RegisterByConfig">
+            <summary>
+            通过配置文件tinyfx.config加载映射
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedContext.GetVirtualPathEmbeddedResource(System.Web.HttpContext)">
+            <summary>
+            获取虚拟路径对应的嵌入资源对象
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedContext.HasVirtualPath">
+            <summary>
+            是否有虚拟路径
+            </summary>
+        </member>
+        <member name="T:TinyFx.AspNet.VirtualPath.EmbeddedModule">
+            <summary>
+            处理静态资源请求映射到DLL嵌入资源的IHttpModule
+            在请求静态资源文件（如.html/.js/.jpg等）时，如果在tinyfx.config中进行了配置，则该请求会映射到对应的DLL嵌入资源
+            例如请求路径:~/TinyFxResource/VirtualPath/demo.png 最终映射到DLL嵌入资源 TinyFx.AspNet.WebForm.VirtualPath.demo.png上
+            动态请求由EmbeddedVirtualPathProvider处理
+            注意：web.config中需要配置 runAllManagedModulesForAllRequests="true"
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedModule.Init(System.Web.HttpApplication)">
+            <summary>
+            初始化
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedModule.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TinyFx.AspNet.VirtualPath.EmbeddedResource">
+            <summary>
+            嵌入资源信息
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedResource.VirtualPath">
+            <summary>
+            映射的虚拟路径
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedResource.Assembly">
+            <summary>
+            资源所在应用程序集
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedResource.ResourceName">
+            <summary>
+            资源路径
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedResource.Data">
+            <summary>
+            嵌入资源的数据
+            </summary>
+        </member>
+        <member name="P:TinyFx.AspNet.VirtualPath.EmbeddedResource.IsStaticFile">
+            <summary>
+            是否是静态文件资源，如.js,.bmp等
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedResource.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedResource.#ctor(System.Reflection.Assembly,System.String,System.String,System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="assembly"></param>
+            <param name="resourceName"></param>
+            <param name="virtualPath"></param>
+            <param name="isStaticFile"></param>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedResource.GetCacheDependency(System.DateTime)">
+            <summary>
+            获得CacheDependency
+            </summary>
+            <param name="utcStart"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.AspNet.VirtualPath.EmbeddedVirtualFile">
+            <summary>
+            嵌入资源虚拟文件
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedVirtualFile.#ctor(System.String,TinyFx.AspNet.VirtualPath.EmbeddedResource,TinyFx.AspNet.VirtualPath.EmbeddedCacheControl)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="virtualPath"></param>
+            <param name="embedded"></param>
+            <param name="cacheControl"></param>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedVirtualFile.Open">
+            <summary>
+            打开资源文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.AspNet.VirtualPath.EmbeddedVirtualPathProvider">
+            <summary>
+            嵌入资源虚拟路径提供程序（动态资源如.aspx）
+            </summary>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedVirtualPathProvider.FileExists(System.String)">
+            <summary>
+            虚拟文件是否存在
+            </summary>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedVirtualPathProvider.GetFile(System.String)">
+            <summary>
+            获取虚拟文件
+            </summary>
+            <param name="virtualPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.AspNet.VirtualPath.EmbeddedVirtualPathProvider.GetCacheDependency(System.String,System.Collections.IEnumerable,System.DateTime)">
+            <summary>
+            获取CacheDependency
+            </summary>
+            <param name="virtualPath"></param>
+            <param name="virtualPathDependencies"></param>
+            <param name="utcStart"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.AspNet.PreApplicationConfig.Register">
+            <summary>
+            执行注册
+            </summary>
+        </member>
+        <member name="T:TinyFx.CSharpCodeExecutor">
+            <summary>
+            C#代码动态编译执行
+            </summary>
+        </member>
+        <member name="P:TinyFx.CSharpCodeExecutor.ReferencedAssemblies">
+            <summary>
+            获取当前项目所引用的程序集。
+            </summary>
+        </member>
+        <member name="M:TinyFx.CSharpCodeExecutor.#ctor(System.String)">
+            <summary>
+             构造函数
+            </summary>
+            <param name="code">动态代码</param>
+        </member>
+        <member name="M:TinyFx.CSharpCodeExecutor.Execute(System.String,System.String,System.Object[])">
+            <summary>
+            执行动态代码中的方法
+            </summary>
+            <param name="typeName">类名</param>
+            <param name="methodName">方法名</param>
+            <param name="parameters">执行参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.CSharpCodeExecutor.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.VirtualPathElement">
+            <summary>
+            虚拟路径配置节
+            请求路径映射: ~/TinyFxResource/VirtualPath/demo.png
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.VirtualPathElement.RequestPath">
+            <summary>
+            虚拟的请求URL前缀。如：~/TinyFxResource/
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.VirtualPathElement.ResourcePath">
+            <summary>
+            映射的嵌入资源路径前缀。如：TinyFx.AspNet.WebForm
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.VirtualPathElement.Assembly">
+            <summary>
+            程序集名称的长格式
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.WebApi.CorsElement">
+            <summary>
+            跨域配置
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.CorsElement.Enabled">
+            <summary>
+            是否使用跨域
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.CorsElement.Origins">
+            <summary>
+            跨域域名， ,分割
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.CorsElement.Headers">
+            <summary>
+            跨域Headers ,分割
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.CorsElement.Methods">
+            <summary>
+            跨域Methods ,分割
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.WebApi.DebugElement">
+            <summary>
+            Debug配置节
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.DebugElement.LogRequest">
+            <summary>
+            是否记录Reqeust
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.DebugElement.LogResponse">
+            <summary>
+            是否记录Response
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.DebugElement.Logger">
+            <summary>
+            用于日志的log4net loggerName
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.WebApi.JsonSerializeElement">
+            <summary>
+            自定义Json序列化
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.JsonSerializeElement.Enabled">
+            <summary>
+            是否使用自定义的Json序列化
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.JsonSerializeElement.Formatter">
+            <summary>
+            格式化器
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.WebApi.JwtAuthElement">
+            <summary>
+            Jwt配置
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.JwtAuthElement.Enabled">
+            <summary>
+            是否使用
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.JwtAuthElement.SecretKey">
+            <summary>
+            Jwt Key
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.JwtAuthElement.TokenExpiry">
+            <summary>
+            Jwt TokenExpiry
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.WebApi.UnhandledExceptionElement">
+            <summary>
+            异常处理配置信息
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.UnhandledExceptionElement.Enabled">
+            <summary>
+            是否使用异常处理程序
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.UnhandledExceptionElement.ResponseException">
+            <summary>
+            是否返回异常信息给客户端
+            </summary>
+        </member>
+        <member name="P:TinyFx.Configuration.AspNet.WebApi.UnhandledExceptionElement.Logger">
+            <summary>
+            用于日志的log4net loggerName
+            </summary>
+        </member>
+        <member name="T:TinyFx.Configuration.AspNet.WebApi.VersionElement">
+            <summary>
+            版本控制
+            </summary>
+        </member>
+        <member name="T:TinyFx.Data.DbFactory">
+            <summary>
+            负责创建 Database 的核心类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.Create(System.String)">
+            <summary>
+            根据connectionStringName创建Database
+            </summary>
+            <param name="connectionStringName">配置文件中tinyFx.data.connectionStrings定义的名称, 默认值tinyFx.dataConfig.defaultConnectionString</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.Create``1(System.String)">
+            <summary>
+            创建指定类型的Database, ，如果connectionStringName长度超过50则认为是ConnectionString处理
+            </summary>
+            <typeparam name="TDatabase">具体的数据库对象，如：MySqlDatabase</typeparam>
+            <param name="connectionStringName">配置文件中tinyFx.data.connectionStrings定义的名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.Create(TinyFx.Data.DbDataProvider,System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建自定义的Database
+            </summary>
+            <param name="provider">数据提供程序</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="readConnectionString">只读数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.Create(TinyFx.Data.DbDataProvider,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建自定义的Database
+            </summary>
+            <param name="provider">数据提供程序</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.Create``1(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建自定义的Database
+            </summary>
+            <typeparam name="TDatabase"></typeparam>
+            <param name="connectionString"></param>
+            <param name="commandTimeout"></param>
+            <param name="inst"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.Create``1(System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建自定义的Database
+            </summary>
+            <typeparam name="TDatabase"></typeparam>
+            <param name="connectionString"></param>
+            <param name="readConnectionString"></param>
+            <param name="commandTimeout"></param>
+            <param name="inst"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateSqlServer(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建基于 SQL Server 的 .NET Framework 数据提供程序的 Database
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateSqlServer(System.String,System.String,System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建连接SQL Server的Database
+            </summary>
+            <param name="server">服务器地址</param>
+            <param name="database">数据库名称</param>
+            <param name="userid">用户名</param>
+            <param name="password">密码</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateMySql(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建连接MySQL的Database
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateMySql(System.String,System.String,System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建连接MySQL的Database
+            </summary>
+            <param name="server">数据库服务器地址</param>
+            <param name="database">数据库名称</param>
+            <param name="user">用户名</param>
+            <param name="password">密码</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateOracle(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建基于 Oracle 的ODAC(ODP.NET)数据提供程序的 Database
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateOracle(System.String,System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建基于 Oracle 的ODAC(ODP.NET)数据提供程序的 Database
+            </summary>
+            <param name="dataSource">数据服务，如：//172.28.8.31/ServiceName</param>
+            <param name="userid">用户名</param>
+            <param name="password">密码</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateOleDb(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建基于 OLE DB 的 .NET Framework 数据提供程序的 Database
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateAccess(System.String,System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建连接Access的Database
+            </summary>
+            <param name="filename">文件名，如：d:\1.mdb</param>
+            <param name="userid">用户名</param>
+            <param name="password">密码</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.DbFactory.CreateExcel(System.String,System.Boolean,System.Int32,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            创建连接Excel的Database
+            </summary>
+            <param name="filename">文件名，如：d:\1.xls</param>
+            <param name="hdr">第一行是否处理为标题行</param>
+            <param name="imex">导入导出模式设置</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Data.OleDb.OleDbSqlDao">
+            <summary>
+            OleDbSqlDao
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbSqlDao.#ctor(System.String,TinyFx.Data.Database)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="database">数据库访问对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbSqlDao.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbSqlDao.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="connectionStringName">数据库连接字符串名称</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbSqlDao.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">Timeout时间</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbSqlDao.SetParameterDbType(System.Data.OleDb.OleDbParameter,System.Data.OleDb.OleDbType)">
+            <summary>
+            SetParameterDbType
+            </summary>
+            <param name="para"></param>
+            <param name="dbType"></param>
+        </member>
+        <member name="T:TinyFx.Data.OleDb.OleDbProcDao">
+            <summary>
+            OleDbProcDao
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbProcDao.#ctor(System.String,TinyFx.Data.Database)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="database">数据库访问对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbProcDao.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbProcDao.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="connectionStringName">数据库连接字符串名称</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbProcDao.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">commandTimeout</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbProcDao.SetParameterDbType(System.Data.OleDb.OleDbParameter,System.Data.OleDb.OleDbType)">
+            <summary>
+            SetParameterDbType
+            </summary>
+            <param name="para"></param>
+            <param name="dbType"></param>
+        </member>
+        <member name="T:TinyFx.Data.OleDb.OleDbDatabase">
+            <summary>
+            表示一个OLE DB数据库操作对象，参数以?占位，必须按照顺序传入
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.#ctor(TinyFx.Data.ConnectionStringConfig)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="config">配置信息</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionStringName">配置文件中的 connectionStringName， 如果长度超过50则默认理解为connectionString</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.#ctor(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.#ctor(System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="readConnectionString">只读数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.GetParameterName(System.String)">
+            <summary>
+            获得符合数据库提供者的参数名称
+            </summary>
+            <param name="parameterName">参数名称</param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Data.OleDb.OleDbDatabase.ParameterToken">
+            <summary>
+            ParameterToken
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.OleDb.OleDbDatabase.Factory">
+            <summary>
+            Factory
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.GetConnectionStringInfo(System.String)">
+            <summary>
+            获取连接字符串信息
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.SetParameterDbType(System.Data.OleDb.OleDbParameter,System.Data.OleDb.OleDbType)">
+            <summary>
+            设置参数类型方法
+            </summary>
+            <param name="para"></param>
+            <param name="dbType"></param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.DeriveParameters(TinyFx.Data.CommandWrapper)">
+            <summary>
+            DeriveParameters
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.GetPager(System.String,System.Int32,System.String)">
+            <summary>
+            GetPager
+            </summary>
+            <param name="sql"></param>
+            <param name="pageSize"></param>
+            <param name="keyField"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.GetSqlDao(System.String)">
+            <summary>
+            GetSqlDao
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OleDb.OleDbDatabase.GetProcDao(System.String)">
+            <summary>
+            GetProcDao
+            </summary>
+            <param name="proc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Data.OracleClient.OracleSqlDao">
+            <summary>
+            OracleSqlDao
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleSqlDao.#ctor(System.String,TinyFx.Data.Database)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="database">数据库访问对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleSqlDao.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleSqlDao.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="connectionStringName">数据库连接字符串名称</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleSqlDao.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">Timeout时间</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleSqlDao.SetParameterDbType(Oracle.ManagedDataAccess.Client.OracleParameter,Oracle.ManagedDataAccess.Client.OracleDbType)">
+            <summary>
+            SetParameterDbType
+            </summary>
+            <param name="para"></param>
+            <param name="dbType"></param>
+        </member>
+        <member name="T:TinyFx.Data.OracleClient.OracleProcDao">
+            <summary>
+            OracleProcDao
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleProcDao.#ctor(System.String,TinyFx.Data.Database)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="database">数据库访问对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleProcDao.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleProcDao.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="connectionStringName">数据库连接字符串名称</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleProcDao.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="proc">存储过程名称</param>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">commandTimeout</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleProcDao.SetParameterDbType(Oracle.ManagedDataAccess.Client.OracleParameter,Oracle.ManagedDataAccess.Client.OracleDbType)">
+            <summary>
+            SetParameterDbType
+            </summary>
+            <param name="para"></param>
+            <param name="dbType"></param>
+        </member>
+        <member name="T:TinyFx.Data.OracleClient.OracleDatabase">
+            <summary>
+            表示一个Oracle数据库操作对象，数据提供程序由Oracle的ODAC提供(需要安装ODAC)。参数以：开头
+            由.net提供数据提供程序，支持Oracle8.1.7-9iR2版本，已过期不再使用!
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.#ctor(TinyFx.Data.ConnectionStringConfig)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="config">配置信息</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionStringName">配置文件中的 connectionStringName， 如果长度超过50则默认理解为connectionString</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.#ctor(System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.#ctor(System.String,System.String,System.Int32,TinyFx.Data.Instrumentation.IDataInstProvider)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="readConnectionString">只读数据库连接字符串</param>
+            <param name="commandTimeout">超时时间，单位秒</param>
+            <param name="inst">数据操作执行事件监测对象</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.GetParameterName(System.String)">
+            <summary>
+            获得符合数据库提供者的参数名称
+            </summary>
+            <param name="parameterName">参数名称</param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Data.OracleClient.OracleDatabase.ParameterToken">
+            <summary>
+            ParameterToken
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.OracleClient.OracleDatabase.SupportsAsync">
+            <summary>
+            是否支持异步
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.OracleClient.OracleDatabase.Factory">
+            <summary>
+            DbProviderFactory
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.GetConnectionStringInfo(System.String)">
+            <summary>
+            获取连接字符串信息
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.SetParameterDbType(Oracle.ManagedDataAccess.Client.OracleParameter,Oracle.ManagedDataAccess.Client.OracleDbType)">
+            <summary>
+            设置参数类型方法
+            </summary>
+            <param name="para"></param>
+            <param name="dbType"></param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.DeriveParameters(TinyFx.Data.CommandWrapper)">
+            <summary>
+            DeriveParameters
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.GetPager(System.String,System.Int32,System.String)">
+            <summary>
+            获得IDataPager
+            </summary>
+            <param name="sql"></param>
+            <param name="pageSize"></param>
+            <param name="keyField"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.GetSqlDao(System.String)">
+            <summary>
+            创建SqlDao
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDatabase.GetProcDao(System.String)">
+            <summary>
+            创建ProcDao
+            </summary>
+            <param name="proc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Data.OracleClient.OracleDataPager">
+            <summary>
+            Oracle分页类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDataPager.#ctor(System.String,System.Int32,TinyFx.Data.Database,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sql"></param>
+            <param name="pageSize"></param>
+            <param name="database"></param>
+            <param name="keyField"></param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDataPager.AddInParameter(System.String,System.Object,Oracle.ManagedDataAccess.Client.OracleDbType,System.Int32)">
+            <summary>
+            添加分页SQL语句中定义的参数
+            </summary>
+            <param name="name">参数名称</param>
+            <param name="value">参数值</param>
+            <param name="dbType">参数类型</param>
+            <param name="size">参数大小</param>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDataPager.GetSqlCacheItem">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.OracleClient.OracleDataPager.BuildSqlDao(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="pageIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Data.SqlClient.SqlBcpWrapper">
+            <summary>
+            SQL Server bcp工具功能封装，只支持SQL Server 2008 R2的BCP v10以上的版本
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.Server">
+            <summary>
+            服务器ip
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.Database">
+            <summary>
+            数据库名称
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.UserId">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.UseChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.UseNative">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TinyFx.Data.SqlClient.SqlBcpWrapper.BatchSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TinyFx.Data.SqlClient.SqlBcpWrapper.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="server"></param>
+            <param name="uid"></param>
+            <param name="pwd"></param>
+            <param name="database"></param>
+        </member>
+        <member name="M:TinyFx.Data.SqlClient.SqlBcpWrapper.ExportQuery(System.String,System.String)">
+            <summary>
+            导出查询数据到文件
+            </summary>
+            <param name="query"></param>
+            <param name="outFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.SqlClient.SqlBcpWrapper.ExportTable(System.String,System.String)">
+            <summary>
+            导出表
+            </summary>
+            <param name="table"></param>
+            <param name="outFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Data.SqlClient.SqlBcpWrapper.ImportTable(System.String,System.String)">
+            <summary>
+            导入表
+            </summary>
+            <param name="table"></param>
+            <param name="inFile"></param>
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetDelay(System.Int32)">
+             Sets the delay time between each frame, or changes it
+             for subsequent frames (applies to last frame added).
+            
+             @param ms int delay time in milliseconds
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetDispose(System.Int32)">
+            Sets the GIF frame disposal code for the last added frame
+            and any subsequent frames.  Default is 0 if no transparent
+            color has been set, otherwise 2.
+            @param code int disposal code.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetRepeat(System.Int32)">
+             Sets the number of times the set of GIF frames
+             should be played.  Default is 1; 0 means play
+             indefinitely.  Must be invoked before the first
+             image is added.
+            
+             @param iter int number of iterations.
+             @return
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetTransparent(System.Drawing.Color)">
+             Sets the transparent color for the last added frame
+             and any subsequent frames.
+             Since all colors are subject to modification
+             in the quantization process, the color in the final
+             palette for each frame closest to the given color
+             becomes the transparent color for that frame.
+             May be set to null to indicate no transparent color.
+            
+             @param c Color to be treated as transparent on display.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.AddFrame(System.Drawing.Image)">
+             Adds next GIF frame.  The frame is not written immediately, but is
+             actually deferred until the next frame is received so that timing
+             data can be inserted.  Invoking <code>finish()</code> flushes all
+             frames.  If <code>setSize</code> was not invoked, the size of the
+             first image is used for all subsequent frames.
+            
+             @param im BufferedImage containing frame to write.
+             @return true if successful.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.Finish">
+            Flushes any pending data and closes output file.
+            If writing to an OutputStream, the stream is not
+            closed.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetFrameRate(System.Single)">
+             Sets frame rate in frames per second.  Equivalent to
+             <code>setDelay(1000/fps)</code>.
+            
+             @param fps float frame rate (frames per second)
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetQuality(System.Int32)">
+             Sets quality of color quantization (conversion of images
+             to the maximum 256 colors allowed by the GIF specification).
+             Lower values (minimum = 1) produce better colors, but slow
+             processing significantly.  10 is the default, and produces
+             good color mapping at reasonable speeds.  Values greater
+             than 20 do not yield significant improvements in speed.
+            
+             @param quality int greater than 0.
+             @return
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.SetSize(System.Int32,System.Int32)">
+             Sets the GIF frame size.  The default size is the
+             size of the first frame added if this method is
+             not invoked.
+            
+             @param w int frame width.
+             @param h int frame width.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.Start(System.IO.MemoryStream)">
+            <summary>
+            
+            </summary>
+            <param name="os"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.Start">
+             Initiates GIF file creation on the given stream.  The stream
+             is not closed automatically.
+            
+             @param os OutputStream on which GIF images are written.
+             @return false if initial write failed.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.Start(System.String)">
+             Initiates writing of a GIF file with the specified name.
+            
+             @param file String containing output file name.
+             @return false if open or initial write failed.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.AnalyzePixels">
+            Analyzes image colors and creates color map.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.FindClosest(System.Drawing.Color)">
+             Returns index of palette color closest to c
+            
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.GetImagePixels">
+            Extracts image pixels into byte array "pixels"
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WriteGraphicCtrlExt">
+            Writes Graphic Control Extension
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WriteImageDesc">
+            Writes Image Descriptor
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WriteLSD">
+            Writes Logical Screen Descriptor
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WriteNetscapeExt">
+            Writes Netscape application extension to define
+            repeat count.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WritePalette">
+            Writes color table
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WritePixels">
+            Encodes and writes pixel data
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WriteShort(System.Int32)">
+            Write 16-bit value to output stream, LSB first
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.AnimatedGifEncoder.WriteString(System.String)">
+            Writes string to output stream
+        </member>
+        <member name="F:TinyFx.Drawing.NGif.GifDecoder.STATUS_OK">
+            File read status: No errors.
+        </member>
+        <member name="F:TinyFx.Drawing.NGif.GifDecoder.STATUS_FORMAT_ERROR">
+            File read status: Error decoding file (may be partially decoded)
+        </member>
+        <member name="F:TinyFx.Drawing.NGif.GifDecoder.STATUS_OPEN_ERROR">
+            File read status: Unable to open source.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetDelay(System.Int32)">
+             Gets display duration for specified frame.
+            
+             @param n int index of frame
+             @return delay in milliseconds
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetFrameCount">
+            Gets the number of frames read from file.
+            @return frame count
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetImage">
+             Gets the first (or only) image read.
+            
+             @return BufferedImage containing first frame, or null if none.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetLoopCount">
+             Gets the "Netscape" iteration count, if any.
+             A count of 0 means repeat indefinitiely.
+            
+             @return iteration count if one was specified, else 1.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetPixels(System.Drawing.Bitmap)">
+            Creates new frame image from current data (and previous
+            frames as specified by their disposition codes).
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetFrame(System.Int32)">
+             Gets the image contents of frame n.
+            
+             @return BufferedImage representation of frame, or null if n is invalid.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.GetFrameSize">
+             Gets image size.
+            
+             @return GIF image dimensions
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.Read(System.IO.Stream)">
+             Reads GIF image from stream
+            
+             @param BufferedInputStream containing GIF file.
+             @return read status code (0 = no errors)
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.Read(System.String)">
+             Reads GIF file from specified file/URL source  
+             (URL assumed if name contains ":/" or "file:")
+            
+             @param name String containing source
+             @return read status code (0 = no errors)
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.DecodeImageData">
+            Decodes LZW image data into pixel array.
+            Adapted from John Cristy's ImageMagick.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.Error">
+            Returns true if an error was encountered during reading/decoding
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.Init">
+            Initializes or re-initializes reader
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.Read">
+            Reads a single byte from the input stream.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadBlock">
+             Reads next variable length block from input.
+            
+             @return number of bytes stored in "buffer"
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadColorTable(System.Int32)">
+             Reads color table as 256 RGB integer values
+            
+             @param ncolors int number of colors to read
+             @return int array containing 256 colors (packed ARGB with full alpha)
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadContents">
+            Main file parser.  Reads GIF content blocks.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadGraphicControlExt">
+            Reads Graphics Control Extension values
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadHeader">
+            Reads GIF file header information.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadImage">
+            Reads next frame image
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadLSD">
+            Reads Logical Screen Descriptor
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadNetscapeExt">
+            Reads Netscape extenstion to obtain iteration count
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ReadShort">
+            Reads next 16-bit value, LSB first
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.ResetFrame">
+            Resets frame state for reading next image.
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.GifDecoder.Skip">
+            Skips variable length blocks up to and including
+            next zero length block.
+        </member>
+        <member name="T:TinyFx.Drawing.NGif.NGifUtil">
+            <summary>
+            GIF动画处理辅助类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.NGifUtil.EncodeToBytes(System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Boolean)">
+            <summary>
+            生成GIF图片返回byte[]
+            </summary>
+            <param name="imgs">GIF Frames图片</param>
+            <param name="delay">动画间隔时间：ms</param>
+            <param name="repeat">是否重复播放</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.NGifUtil.EncodeToFile(System.String,System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Boolean)">
+            <summary>
+            生成GIF图片保存文件
+            </summary>
+            <param name="file"></param>
+            <param name="imgs"></param>
+            <param name="delay"></param>
+            <param name="repeat"></param>
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.NGifUtil.DecodeToStreams(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            解码GIF返回MemoryStream集合
+            </summary>
+            <param name="file">GIF图片</param>
+            <param name="format">解析Frame图片格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Drawing.NGif.NGifUtil.DecodeToFiles(System.String,System.Drawing.Imaging.ImageFormat,System.String)">
+            <summary>
+            解码GIF保存Frames图片文件
+            </summary>
+            <param name="file">GIF图片</param>
+            <param name="format">解析Frame图片格式</param>
+            <param name="path">保存路径</param>
+        </member>
+        <member name="T:TinyFx.Drawing.ThumbHandler">
+            <summary>
+            缩略图处理类（包括水印）
+            </summary>
+        </member>
+        <member name="P:TinyFx.Drawing.ThumbHandler.SourceImage">
+            <summary>
+            获取或设置需处理的图片
+            </summary>
+        </member>
+        <member name="P:TinyFx.Drawing.ThumbHandler.CompositingQuality">
+            <summary>
+            获取一个值，该值指定如何将合成图像绘制到此 System.Drawing.Graphics。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Drawing.ThumbHandler.InterpolationMode">
+            <summary>
+            获取或设置与此 System.Drawing.Graphics 关联的插补模式。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Drawing.ThumbHandler.SmoothingMode">
+            <summary>
+            获取或设置此 System.Drawing.Graphics 的呈现质量。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Drawing.ThumbHandler.TextRenderingHint">
+            <summary>
+            获取或设置与此 System.Drawing.Graphics 关联的文本的呈现模式。
+            </summary>
+        </member>
+        <member name="P:TinyFx.Drawing.ThumbHandler.ProcessingImage">
+            <summary>
+            当前正在处理的图片
+            </summary>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.#ctor(System.Drawing.Image)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="source">要处理的图片</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.GetZoomSize(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取一个图片按等比例缩小后的大小
+            </summary>
+            <param name="toWidth">缩小到的宽度</param>
+            <param name="toHeight">缩小到的高度</param>
+            <param name="imgWidth">图片的原始宽度</param>
+            <param name="imgHeight">图片的原始高度</param>
+            <returns>返回图片按等比例缩小后的实际大小</returns>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.Resize(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            调整图片大小，按比例缩放或指定高宽裁减
+            </summary>
+            <param name="width">指定的宽</param>
+            <param name="height">指定的高</param>
+            <param name="isZoom">是否等比缩放。true:按等比进行缩放，false:指定高宽裁减</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.DrawTextWaterMark(System.String)">
+            <summary>
+            绘制文字水印
+            </summary>
+            <param name="text">水印文字</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.DrawImageWaterMark(System.Drawing.Image)">
+            <summary>
+            绘制图片水印
+            </summary>
+            <param name="image">水印图片</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.Save(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            将此 System.Drawing.Image 以指定格式保存到指定文件。
+            </summary>
+            <param name="filename">字符串，包含要将此 System.Drawing.Image 保存到的文件的名称。</param>
+            <param name="format">此 System.Drawing.Image 的 System.Drawing.Imaging.ImageFormat。</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.Save(System.IO.Stream,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            将此图像以指定的格式保存到指定的流中。
+            </summary>
+            <param name="stream">将在其中保存图像的 System.IO.Stream。</param>
+            <param name="format">System.Drawing.Imaging.ImageFormat，指定保存的图像的格式。</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.Save(System.IO.Stream,System.Drawing.Imaging.ImageCodecInfo,System.Drawing.Imaging.EncoderParameters)">
+            <summary>
+            使用指定的编码器和图像编码器参数，将该图像保存到指定的流。
+            </summary>
+            <param name="stream">将在其中保存图像的 System.IO.Stream。</param>
+            <param name="encoder">此 System.Drawing.Image 的 System.Drawing.Imaging.ImageCodecInfo。</param>
+            <param name="encoderParams">一个 System.Drawing.Imaging.EncoderParameters，它指定图像编码器使用的参数。</param>
+        </member>
+        <member name="M:TinyFx.Drawing.ThumbHandler.Save(System.String,System.Drawing.Imaging.ImageCodecInfo,System.Drawing.Imaging.EncoderParameters)">
+            <summary>
+            使用指定的编码器和图像编码器参数，将该 System.Drawing.Image 保存到指定的文件。
+            </summary>
+            <param name="filename">字符串，包含要将此 System.Drawing.Image 保存到的文件的名称。</param>
+            <param name="encoder">此 System.Drawing.Image 的 System.Drawing.Imaging.ImageCodecInfo。</param>
+            <param name="encoderParams">用于该 System.Drawing.Image 的 System.Drawing.Imaging.EncoderParameters。</param>
+        </member>
+        <member name="T:TinyFx.Reflection.DynamicCompiler">
+            <summary>
+            动态对象构建器，比反射快
+            </summary>
+        </member>
+        <member name="M:TinyFx.Reflection.DynamicCompiler.CreateBuilder(System.Type,System.Boolean)">
+            <summary>
+            创建构建对象代理
+            </summary>
+            <param name="type">类型信息</param>
+            <param name="useCache">是否使用缓存</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.DynamicCompiler.CreateBuilder(System.String,System.Boolean)">
+            <summary>
+            创建构建对象代理
+            </summary>
+            <param name="typeName">类型信息</param>
+            <param name="useCache">是否使用缓存</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.DynamicCompiler.CreateGetter(System.Type,System.Reflection.PropertyInfo)">
+            <summary>
+            创建获得属性值的代理
+            </summary>
+            <param name="type">类型信息</param>
+            <param name="propertyInfo">属性元数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.DynamicCompiler.CreateGetter(System.Type,System.Reflection.FieldInfo)">
+            <summary>
+            创建获得字段值的代理
+            </summary>
+            <param name="type">类型信息</param>
+            <param name="fieldInfo">字段元数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.DynamicCompiler.CreateSetter(System.Type,System.Reflection.PropertyInfo)">
+            <summary>
+            创建设置属性值的代理
+            </summary>
+            <param name="type">类型信息</param>
+            <param name="propertyInfo">属性元数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.DynamicCompiler.CreateSetter(System.Type,System.Reflection.FieldInfo)">
+            <summary>
+            创建设置字段值的代理
+            </summary>
+            <param name="type">类型信息</param>
+            <param name="fieldInfo">字段元数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Reflection.IObjectPropertyGetter">
+            <summary>
+            对象属性获取器
+            </summary>
+        </member>
+        <member name="M:TinyFx.Reflection.IObjectPropertyGetter.GetValue(System.String)">
+            <summary>
+            获取对象指定属性名的属性值
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.IObjectPropertyGetter.GetValue``1(System.String)">
+            <summary>
+            获取对象指定属性名的属性值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Reflection.ObjectPropertyGetter">
+            <summary>
+            对象属性获取器，用于获取对象指定属性名的属性值
+            </summary>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertyGetter.#ctor(System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertyGetter.GetValue``1(System.Object,System.String)">
+            <summary>
+            获取对象指定属性名的属性值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertyGetter.GetValue(System.Object,System.String)">
+            <summary>
+            获取对象指定属性名的属性值
+            </summary>
+            <param name="obj"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertyGetter.GetValue(System.String)">
+            <summary>
+            获取对象指定属性名的属性值
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertyGetter.GetValue``1(System.String)">
+            <summary>
+            获取对象指定属性名的属性值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Reflection.IObjectPropertySetter">
+            <summary>
+            设置对象指定属性名的属性值的类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Reflection.IObjectPropertySetter.SetValue(System.String,System.Object)">
+            <summary>
+            设置对象指定属性名的属性值
+            </summary>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:TinyFx.Reflection.ObjectPropertySetter">
+            <summary>
+            设置对象指定属性名的属性值的类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertySetter.#ctor(System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertySetter.SetValue(System.Object,System.String,System.Object)">
+            <summary>
+            设置对象指定属性名的属性值
+            </summary>
+            <param name="obj"></param>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Reflection.ObjectPropertySetter.SetValue(System.String,System.Object)">
+            <summary>
+            设置对象指定属性名的属性值
+            </summary>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:TinyFx.Runtime.Caching.MemoryCacheBase">
+            <summary>
+            内存缓存基类
+            </summary>
+        </member>
+        <member name="F:TinyFx.Runtime.Caching.MemoryCacheBase._cache">
+            <summary>
+            全局MemoryCache
+            </summary>
+        </member>
+        <member name="P:TinyFx.Runtime.Caching.MemoryCacheBase.CollectionId">
+            <summary>
+            用于生成MemoryCache的缓存Key，必须保证全局唯一。
+            </summary>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheBase.GetCacheKey(System.String)">
+            <summary>
+            获得CacheKey
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TinyFx.Runtime.Caching.MemoryCacheBase.Policy">
+            <summary>
+            指定缓存项的一组逐出和过期详细信息
+            </summary>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheBase.SetSliding(System.Int32)">
+            <summary>
+            设置缓存策略，此对象中的缓存项如果在给定时段内未被访问，将被逐出。
+            </summary>
+            <param name="minutesExpiration"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheBase.SetAbsolute(System.DateTimeOffset)">
+            <summary>
+            设置缓存策略，此对象中的缓存项将在指定的持续时间后被逐出。
+            </summary>
+            <param name="expiration"></param>
+        </member>
+        <member name="T:TinyFx.Runtime.Caching.MemoryCacheHashBase`1">
+            <summary>
+            存储Hash结构的MemoryCache缓存基类，将多个对象以hash结构存储在MemoryCache中
+            </summary>
+            <typeparam name="T">缓存项类型</typeparam>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.GetCacheValue(System.String)">
+            <summary>
+            根据key获取缓存value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.Contains(System.String)">
+            <summary>
+            缓存是否存在
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.Set(System.String,`0)">
+            <summary>
+            添加缓存项
+            </summary>
+            <param name="key">缓存主键</param>
+            <param name="item">缓存项</param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.Set(System.String,TinyFx.CacheValue{`0})">
+            <summary>
+            添加缓存项
+            </summary>
+            <param name="key"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.Remove(System.String)">
+            <summary>
+            移除缓存项，如果存在返回true
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.Get(System.String)">
+            <summary>
+            根据key获取缓存项，如不存在调用GetCacheValue获取返回并缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.GetOrException(System.String)">
+            <summary>
+            根据key获取缓存项，如果不存在则抛出MemoryCacheNotFound异常。
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheHashBase`1.GetOrDefault(System.String,`0)">
+            <summary>
+            根据key获取缓存项，如果不存在使用默认值
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Runtime.Caching.MemoryCacheNotFound">
+            <summary>
+            未找到缓存项异常
+            </summary>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheNotFound.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheNotFound.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="collectionId"></param>
+            <param name="key"></param>
+        </member>
+        <member name="T:TinyFx.Runtime.Caching.MemoryCacheUtil">
+            <summary>
+            MemoryCache辅助类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.Add``1(System.String,``0)">
+            <summary>
+            添加缓存项
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.AddSliding``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            添加缓存项，指定时间未访问则移除
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="slidingExpiration"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.AddAbsolute``1(System.String,``0,System.DateTimeOffset)">
+            <summary>
+            添加缓存项，到指定时间则移除
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.Set``1(System.String,``0)">
+            <summary>
+            添加或更新缓存项
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.SetSliding``1(System.String,``0,System.TimeSpan)">
+            <summary>
+            添加或更新缓存项，指定时间未访问则移除
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="slidingExpiration"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.SetAbsolute``1(System.String,``0,System.DateTimeOffset)">
+            <summary>
+            添加或更新缓存项，到指定时间则移除
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="absoluteExpiration"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.Remove(System.String)">
+            <summary>
+            移除缓存项
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.Get``1(System.String)">
+            <summary>
+            根据key获取缓存项，如不存在调用GetCacheValue获取返回并缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.GetOrException``1(System.String)">
+            <summary>
+            根据key获取缓存项，如果不存在则抛出MemoryCacheNotFound异常。
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Runtime.Caching.MemoryCacheUtil.GetOrDefault``1(System.String,``0)">
+            <summary>
+            根据key获取缓存项，如果不存在使用默认值
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyFx.Windows.Win32.PeekMessageFlags">
+            <summary>
+            Window API 常数声明
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Win32.SYSTEMTIME">
+            <summary>
+            Win32 API 结构体声明
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.Win32.Win32API">
+            <summary>
+            常用 Windows API 函数声明
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.SetLocalTime(TinyFx.Windows.Win32.SYSTEMTIME@)">
+            <summary>
+            修改当前时间
+            </summary>
+            <param name="lpSystemTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.StretchBlt(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            函数从源矩形中复制一个位图到目标矩形，必要时按目前目标设备设置的模式进行图像的拉伸或压缩
+            </summary>
+            <remarks>
+            函数原型：BOOL StretchBlt(HDC hdcDest, int nXOriginDest, int nYOriginDest, int nWidthDest, int nHeighDest, HDC hdcSrc, int nXOriginSrc, int nYOriginSrc, int nWidthSrc, int nHeightSrc, DWORD dwRop)；
+            </remarks>
+            <param name="hdcDest">指向目标设备环境的句柄</param>
+            <param name="nXOriginDest">指定目标矩形左上角的X轴坐标，按逻辑单位表示坐标</param>
+            <param name="nYOriginDest">指定目标矩形左上角的X轴坐标，按逻辑单位表示坐标</param>
+            <param name="nWidthDest">指定目标矩形的宽度，按逻辑单位表示宽度</param>
+            <param name="nHeighDest">指定目标矩形的高度，按逻辑单位表示高茺</param>
+            <param name="hdcSrc">指向源设备环境的句柄</param>
+            <param name="nXOriginSrc">指向源矩形区域左上角的X轴坐标，按逻辑单位表示坐标</param>
+            <param name="nYOriginSrc">指向源矩形区域左上角的Y轴坐标，按逻辑单位表示坐标</param>
+            <param name="nWidthSrc">指定源矩形的宽度，按逻辑单位表示宽度</param>
+            <param name="nHeightSrc">指定源矩形的高度，按逻辑单位表示高度</param>
+            <param name="dwRop">指定要进行的光栅操作。光栅操作码定义了系统如何在输出操作中组合颜色，这些操作包括刷子、源位图和目标位图等对象。参考BitBlt可了解常用的光栅操作码列表</param>
+            <returns>如果函数执行成功，那么返回值为非零，如果函数执行失败，那么返回值为零。Windows NT：若想获得更多的错误信息，请调用GetLastError函数</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.CreateCompatibleDC(System.IntPtr)">
+            <summary>
+            该函数创建一个与指定设备兼容的内存设备上下文环境（DC）。
+            </summary>
+            <remarks>
+            函数原型：HDC CreateCompatibleDC(HDC hdc)；
+            注释：内存设备上下文环境是仅在内存中存在的设备上下文环境，当内存设备上下文环境被创建时，它的显示界面是标准的一个单色像素宽和一个单色像素高，在一个应用程序可以使用内存设备上下文环境进行绘图操作之前，它必须选择一个高和宽都正确的位图到设备上下文环境中，这可以通过使用CreateCompatibleBitmap函数指定高、宽和色彩组合以满足函数调用的需要。
+            当一个内存设备上下文环境创建时，所有的特性都设为缺省值，内存设备上下文环境作为一个普通的设备上下文环境使用，当然也可以设置这些特性为非缺省值，得到它的特性的当前设置，为它选择画笔，刷子和区域。
+            CreateCompatibleDc函数只适用于支持光栅操作的设备，应用程序可以通过调用GetDeviceCaps函数来确定一个设备是否支持这些操作。
+            当不再需要内存设备上下文环境时，可调用DeleteDc函数删除它。
+            ICM：如果通过该函数的hdc参数传送给该函数设备上下文环境(Dc)对于独立颜色管理（ICM）是能用的，则该函数创建的设备上下文环境(Dc)是ICM能用的，资源和目标颜色间隔是在Dc中定义。
+            </remarks>
+            <param name="hdc">现有设备上下文环境的句柄，如果该句柄为NULL，该函数创建一个与应用程序的当前显示器兼容的内存设备上下文环境</param>
+            <returns>如果成功，则返回内存设备上下文环境的句柄；如果失败，则返回值为NULL</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.CreateCompatibleBitmap(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            该函数创建与指定的设备环境相关的设备兼容的位图
+            </summary>
+            <remarks>
+             函数原型：HBITMAP CreateCompatibleBitmap(HDC hdc,int nWidth,int nHeight)；
+            由CreateCompatibleBitmap函数创建的位图的颜色格式与由参数hdc标识的设备的颜色格式匹配。该位图可以选入任意一个与原设备兼容的内存设备环境中。由于内存设备环境允许彩色和单色两种位图。因此当指定的设备环境是内存设备环境时，由CreateCompatibleBitmap函数返回的位图格式不同。然而为非内存设备环境创建的兼容位图通常拥有相同的颜色格式，并且使用与指定的设备环境一样的色彩调色板。
+            </remarks>
+            <param name="hdc">设备环境句柄</param>
+            <param name="nWidth">指定位图的宽度，单位为像素</param>
+            <param name="nHeight">指定位图的高度，单位为像素。</param>
+            <returns>如果函数执行成功，那么返回值是位图的句柄；如果函数执行失败，那么返回值为NULL。若想获取更多错误信息，请调用GetLastError</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.SelectObject(System.IntPtr,System.IntPtr)">
+            <summary>
+            该函数选择一对象到指定的设备上下文环境中，该新对象替换先前的相同类型的对象。
+            </summary>
+            <remarks>
+            函数原型：HGDIOBJ SelectObject(HDC hdc, HGDIOBJ hgdiobj)；
+            该函数返回先前指定类型的选择对象，一个应用程序在它使用新对象进行绘制完成之后，应该用新对象替换原始的缺省的对象。
+            应用程序不能同时选择一个位图到多个设备上下文环境中。
+            ICM：如果被选择的对象是画笔或笔，那么就执行颜色管理。
+            </remarks>
+            <param name="hdc">设备上下文环境的句柄。</param>
+            <param name="hgdiobj">
+            被选择的对象的句型，该指定对象必须由如下的函数创建。
+            位图：CreateBitmap, CreateBitmapIndirect, CreateCompatible Bitmap, CreateDIBitmap, CreateDIBsection（只有内存设备上下文环境可选择位图，并且在同一时刻只能一个设备上下文环境选择位图）。
+            画笔：CreateBrushIndirect, CreateDIBPatternBrush, CreateDIBPatternBrushPt, CreateHatchBrush, CreatePatternBrush, CreateSolidBrush。
+            字体：CreateFont, CreateFontIndirect。
+            笔：CreatePen, CreatePenIndirect。
+            区域：CombineRgn, CreateEllipticRgn, CreateEllipticRgnIndirect, CreatePolygonRgn, CreateRectRgn, CreateRectRgnIndirect。
+            </param>
+            <returns>
+            如果选择对象不是区域并且函数执行成功，那么返回值是被取代的对象的句柄；如果选择对象是区域并且函数执行成功，返回如下一值；
+            SIMPLEREGION：区域由单个矩形组成；COMPLEXREGION：区域由多个矩形组成。NULLREGION：区域为空。
+            如果发生错误并且选择对象不是一个区域，那么返回值为NULL，否则返回GDI_ERROR。
+            </returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.BitBlt(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.IntPtr,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            该函数对指定的源设备环境区域中的像素进行位块（bit_block）转换，以传送到目标设备环境。
+            </summary>
+            <remarks>
+            函数原型：BOOL BitBlt(HDC hdcDest,int nXDest,int nYDest,int nWidth,int nHeight,HDC hdcSrc,int nXSrc,int nYSrc,DWORD dwRop)；
+            如果在源设备环境中可以实行旋转或剪切变换，那么函数BitBlt返回一个错误。如果存在其他变换（并且目标设备环境中匹配变换无效），那么目标设备环境中的矩形区域将在需要时进行拉伸、压缩或旋转。
+            如果源和目标设备环境的颜色格式不匹配，那么BitBlt函数将源场景的颜色格式转换成能与目标格式匹配的格式。当正在记录一个增强型图元文件时，如果源设备环境标识为一个增强型图元文件设备环境，那么会出现错误。如果源和目标设备环境代表不同的设备，那么BitBlt函数返回错误。
+            </remarks>
+            <param name="hdcDest">指向目标设备环境的句柄</param>
+            <param name="nXDest">指定目标矩形区域左上角的X轴逻辑坐标</param>
+            <param name="nYDest">指定目标矩形区域左上角的Y轴逻辑坐标</param>
+            <param name="nWidth">指定源和目标矩形区域的逻辑宽度</param>
+            <param name="nHeight">指定源和目标矩形区域的逻辑高度</param>
+            <param name="hdcSrc">指向源设备环境的句柄</param>
+            <param name="nXSrc">指定源矩形区域左上角的X轴逻辑坐标</param>
+            <param name="nYSrc">指定源矩形区域左上角的Y轴逻辑坐标</param>
+            <param name="dwRop">指定光栅操作代码。这些代码将定义源矩形区域的颜色数据，如何与目标矩形区域的颜色数据组合以完成最后的颜色</param>
+            <returns>如果函数成功，那么返回值非零；如果函数失败，则返回值为零</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.DeleteDC(System.IntPtr)">
+            <summary>
+            该函数删除指定的设备上下文环境（Dc）
+            </summary>
+            <remarks>
+            函数原型：BOOL DeleteDC(HDC hdc)；
+            如果一个设备上下文环境的句柄是通过调用GetDC函数得到的，那么应用程序不能删除该设备上下文环境，它应该调用ReleaseDC函数来释放该设备上下文环境
+            </remarks>
+            <param name="hdc">设备上下文环境的句柄</param>
+            <returns>成功，返回非零值；失败，返回零</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.PatBlt(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            该函数使用当前选入指定设备环境中的刷子绘制给定的矩形区域。通过使用给出的光栅操作来对该刷子的颜色和表面颜色进行组合
+            </summary>
+            <remarks>
+            函数原型：BOOL PatBlt(HDC hdc, int nXLeft, int nYLeft, int nWidth, int nHeight, DWORD dwRop)；
+            备注：该函数的参数dwRop取值限定为全部256个三元光栅操作有限子集。特别地，涉及源矩形的操作码不能使用。
+            并非所有设备都支持PalBlt函数。有关更多的信息，请参考函数GetDeviceCaps中有关RC_BITBLT特性的描述。
+            </remarks>
+            <param name="hdc">设备环境句柄</param>
+            <param name="nXLeft">指定要填充的矩形左上角的X轴坐标，坐标按逻辑单位表示</param>
+            <param name="nYLeft">指定要填充的矩形左上角的Y轴坐标，坐标按逻辑单位表示</param>
+            <param name="nWidth">指定矩形的宽度，按逻辑单位表示宽度</param>
+            <param name="nHeight">指定矩形的高度，按逻辑单位表示高度</param>
+            <param name="dwRop">
+            指定光栅操作码。该操作码可以取下列值，这些值的含义如下：
+               PATCOPY：将指定的模式拷贝到目标位图中。
+               PATINVERT：使用布尔OR（或）操作符将指定模式的颜色与目标矩形的颜色进行组合。
+               DSTINVERT：将目标矩形反向。
+               BLACKNESS：使用物理调色板中与索引0相关的颜色填充目标矩形。（对于缺省的物理调色板而言，该颜色为黑色）。
+               WHITENESS：使用物理调色板中与索引1有关的颜色来填充目标矩形。（对于缺省的物理调色板而言，该颜色为白色）。
+            </param>
+            <returns>如果函数执行成功，则返回值为非零；如果函数执行失败，则返回值为0</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.DeleteObject(System.IntPtr)">
+            <summary>
+            该函数删除一个逻辑笔、画笔、字体、位图、区域或者调色板，释放所有与该对象有关的系统资源，在对象被删除之后，指定的句柄也就失效了
+            </summary>
+            <remarks>
+            函数原型：BOOL DeleteObject(HGDIOBJ hObject)；
+            注释：当一个绘画对象（如笔或画笔）当前被选入一个设备上下文环境时不要删除该对象。当一个调色板画笔被删除时，与该画笔相关的位图并不被删除，该图必须单独地删除。
+            Windows CE：当对象在当前被选入一个设备上下文环境时，DeleteObject函数返回错误。
+            </remarks>
+            <param name="hObject">逻辑笔、画笔、字体、位图、区域或者调色板的句柄</param>
+            <returns>成功，返回非零值；如果指定的句柄无效或者它已被选入设备上下文环境，则返回值为零</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.GetPixel(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            该函数检索指定坐标点的像素的RGB颜色值
+            </summary>
+            <remarks>
+            函数原型：COLORREF GetPixel(HDC hdc, int nXPos, int nYPos)；
+            备注：该像素点必须在当前剪辑区的边界之内。并不是所有设备都支持GetPixel函数。应用程序应调用GetDeviceCaps函数来确定指定的设备是否支持该函数。
+            </remarks>
+            <param name="hdc">设备环境句柄</param>
+            <param name="nXPos">指定要检查的像素点的逻辑X轴坐标</param>
+            <param name="nYPos">指定要检查的像素点的逻辑Y轴坐标</param>
+            <returns>返回值是该象像点的RGB值。如果指定的像素点在当前剪辑区之外；那么返回值是CLR_INVALID</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.SetMapMode(System.IntPtr,System.Int32)">
+            <summary>
+            该函数设置指定设备环境的映射方式，映射方式定义了将逻辑单位转换为设备单位的度量单位，并定义了设备的X、Y轴的方向
+            </summary>
+            函数原型：int SetMapMode(HDC hdc, int fnMapMode)；
+            备注：MM_TEXT方式允许应用程序以设备像素为单位来工作，像素的大小根据设备不同而不同。MM_HIENLISH, MM_HIMETRIC, MM_LOENGLISH, MM_LOMETRIC和MM_TWIPS方式对必须用物理意义单位（如英寸或毫米）制图的应用程序是非常有用的。MM_ISOTROPIC方式保证了1：1的纵横比。MM_HIENLISH方式允许对X和Y坐标分别进行调整
+            <remarks>
+            </remarks>
+            <param name="hdc">指向设备环境的句柄</param>
+            <param name="fnMapMode">
+            指定新的映射方式，此参数可以是下面列出的任何一个值。
+              MM_ANISOTROPIC：逻辑单位转换成具有任意比例轴的任意单位，用SetWindowExtEx和SetViewportExtEx函数可指定单位、方向和比例。
+              MM_HIENGIISH：每个逻辑单位转换为0.001英寸，X的正方面向右，Y的正方向向上。
+              MM_HIMETRIC：每个逻辑单位转换为0.01毫米，X正方向向右，Y的正方向向上。
+              MM_ISOTROPIC：逻辑单位转换成具有均等比例轴的任意单位，即沿X轴的一个单位等于沿Y轴的一个单位，用和函数可以指定该轴的单位和方向。图形设备界面（GDI）需要进行调整，以保证X和Y的单位保持相同大小（当设置窗口范围时，视口将被调整以达到单位大小相同）。
+              MM_LOENGIISH：每个逻辑单位转换为英寸，X正方向向右，Y正方向向上。
+              MM_LOMETRIC：每个逻辑单位转换为毫米，X正方向向右，Y正方向向上。
+              MM_TEXT：每个逻辑单位转换为一个设置备素，X正方向向右，Y正方向向下。
+              MM_TWIPS；每个逻辑单位转换为打印点的1／20（即1／1400英寸），X正方向向右，Y方向向上。
+            </param>
+            <returns>如果函数调用成功，返回值指定先前的映射方式，否则，返回值为零，若想获得更多错误信息，请调用GetLastError函数</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.GetObjectType(System.IntPtr)">
+            <summary>
+            该函数确定指定对象的类型
+            </summary>
+            <remarks>
+            函数原型：DWORD GetObjectType(HGDIOBJ h)；
+            </remarks>
+            <param name="h">图形对象的句柄</param>
+            <returns>
+            如果成功，返回值标识该对象，它可取如下值：
+              OBJ_BITMAP：位图（Bitmap）；OBJ_BRUSH：画笔（Brush）；OBJ_FONT：字体（Font）；OBJ_PAL：调色板（palette）；
+              OBJ_EXTPEN：扩展笔（Extendedpen）；OBJ_REGION：区域（Region）；OBJ_DC：设备上下文环境（Devicecontext）；
+              OBJ_MEMDC：存设备上下文环境；OBJ_METAFILE：图元文件；OBJ_ENHMETAFILE：增强图元文件；
+              OBJ_ENHMETADC：增强图元文件设备上下文环境；
+            如果失败，返回值为零，若想获得更多错误信息，请调用GetLastError函数。
+            Windows CE：Windows CE不支持下列返回值：
+              OBJ_EXTPEN；OBJ_METADC；OBJ_METAFILE；OBJ_ENHMETAFILE；OBJ-ENHMETADC
+            </returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.CreateDIBSection(System.IntPtr,TinyFx.Windows.Win32.BITMAPINFO_FLAT@,System.Int32,System.Int32@,System.IntPtr,System.Int32)">
+            <summary>
+            该函数创建应用程序可以直接写入的、与设备无关的位图（DIB）。该函数提供一个指针，该指针指向位图位数据值的地方。可以给文件映射对象提供句柄，函数使用文件映射对象来创建位图，或者让系统为位图分配内存
+            </summary>
+            <remarks>
+            函数原型：HBITMAP CreateDIBSection(HDC hdc,CONST BITMAPINFO *pbmi,UINT iUsage,VOID *ppvBits,HANDLE hSection,DWORD dwOffset)；
+            备注：正如上面提到过，如果hSection为NULL，那么系统为DIB分配内存。当以后通过调用DeleteObject函数删除该DIB时，系统将关闭指向相应内存的句柄。如果Hsection不为NULL，那么在调用DeleteObject删除该位图之后，必须自己关闭hSection内存句柄。
+            </remarks>
+            <param name="hdc">设备环境句柄。如果iUsage的值是DIB＿PAL＿COLORS，那么函数使用该设备环境的逻辑调色板对与设备无关位图的颜色进行初始化</param>
+            <param name="pbmi">指向BITMAPINFO结构的指针，该结构指定了与设备无关位图的各种属性，其中包括位图的维数和颜色</param>
+            <param name="iUsage">指定由pbmi参数指定的BITMAPINFO结构中的成员bmiColors数组包含的数据类型（要么是逻辑调色板索引值，要么是原文的RGB值）</param>
+            <param name="ppvBits">指向一个变量的指针，该变量接收一个指向DIB位数据值的指针</param>
+            <param name="hSection">文件映射对象的句柄。函数将使用该对象来创建DIB（与设备无关位图）。该参数可以是NULL</param>
+            <param name="dwOffset">指定从hSection引用的文件映射对象开始处算起的偏移量，超过这个偏移量的地方就是位图的位数据值开始存放的地方。在hSection为NULL时忽略该值。位图的位数据值是以DWORD为单位计算的</param>
+            <returns>如果函数执行成功，那么返回值是一个指向刚刚创建的与设备无关位图的句柄，并且*ppvBits指向该位图的位数据值；如果函数执行失败，那么返回值为NULL，并且*ppvBit也为NULL，若想获得更多错误信息，请调用GetLastError函数</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.GetDIBits(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,TinyFx.Windows.Win32.BITMAPINFOHEADER,System.Int32)">
+            <summary>
+            GetDIBits函数检取指定位图的信息，并将其以指定格式复制到一个缓冲区中
+            </summary>
+            <remarks>
+            函数原型：int GetDIBits(HDC hdc, HBITMAP hbmp, UINT uStartScan, UINT cScanLines, LPVOID lpvBits, LPBITMAPINFO lpbi, UINT uUsage)；
+            </remarks>
+            <param name="hdc">设备环境句柄</param>
+            <param name="hbmp">位图句柄</param>
+            <param name="uStartScan">指定检索的第一个扫描线</param>
+            <param name="cScanLines">指定检索的扫描线数</param>
+            <param name="lpvBits">指向用来检索位图数据的缓冲区的指针。如果此参数为NULL，那么函数将把位图的维数与格式传递给lpbi参数指向的BITMAPINFO结构</param>
+            <param name="lpbi">指向一个BITMAPINFO结构的指外，此结构确定了设备无在位图的数据格式</param>
+            <param name="uUsage">
+            指定BITMAPINFO结构的bmiColors成员的格式。它必须为下列取值：
+              DIB_PAL_COLORS：颜色表由指向当前逻辑调色板的16位索引值数组构成。
+              DIB_RGB_COLORS：颜色表由红、绿、蓝（RGB）三个直接值构成。
+            </param>
+            <returns>如果lpvBits参数非空，并且函数调用成功，那么返回值为从位图复制的扫描线数</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.GetDC(System.IntPtr)">
+            <summary>
+            该函数检索一指定窗口的客户区域或整个屏幕的显示设备上下文环境的句柄，以后可以在GDI函数中使用该句柄来在设备上下文环境中绘图
+            </summary>
+            <remarks>
+            函数原型：HDC GetDC(HWND hWnd)；
+            </remarks>
+            <param name="hWnd">设备上下文环境被检索的窗口的句柄，如果该值为NULL，GetDC则检索整个屏幕的设备上下文环境</param>
+            <returns>如果成功，返回指定窗口客户区的设备上下文环境；如果失败，返回值为Null</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.ReleaseDC(System.IntPtr,System.IntPtr)">
+            <summary>
+            函数释放设备上下文环境（DC）供其他应用程序使用。函数的效果与设备上下文环境类型有关。它只释放公用的和设备上下文环境，对于类或私有的则无数
+            </summary>
+            <remarks>
+            函数原型：int ReleaseDC(HWND hWnd, HDC hdc)；
+            注释：每次调用GetWindowDC和GetDC函数检索公用设备上下文环境之后，应用程序必须调用ReleaseDC函数来释放设备上下文环境。
+            应用程序不能调用ReleaseDC函数来释放由CreateDC函数创建的设备上下文环境，只能使用DeleteDC函数。
+            </remarks>
+            <param name="hWnd">指向要释放的设备上下文环境所在的窗口的句柄</param>
+            <param name="hdc">指向要释放的设备上下文环境的句柄</param>
+            <returns>返回值说明了设备上下文环境是否释放；如果释放成功，则返回值为1；如果没有释放成功，则返回值为0</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.GetDesktopWindow">
+            <summary>
+            该函数返回桌面窗口的句柄。桌面窗口覆盖整个屏幕。桌面窗口是一个要在其上绘制所有的图标和其他窗口的区域
+            </summary>
+            <remarks>
+            函数原型：HWND GetDesktopWindow（VOID）
+            </remarks>
+            <returns>函数返回桌面窗口的句柄</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.ShowWindow(System.IntPtr,System.Int16)">
+            <summary>
+            该函数设置指定窗口的显示状态
+            </summary>
+            <remarks>
+            函数原型：BOOL ShowWindow（HWND hWnd，int nCmdShow）；
+            </remarks>
+            <param name="hWnd">窗口句柄</param>
+            <param name="nCmdShow">指定窗口如何显示。如果发送应用程序的程序提供了STARTUPINFO结构，则应用程序第一次调用ShowWindow时该参数被忽略。否则，在第一次调用ShowWindow函数时，该值应为在函数WinMain中nCmdShow参数。在随后的调用中，该参数可以为ShowWindowStyles值之一
+            </param>
+            <returns>如果窗口以前可见，则返回值为非零。如果窗口以前被隐藏，则返回值为零</returns>
+        </member>
+        <member name="M:TinyFx.Windows.Win32.Win32API.SetForegroundWindow(System.IntPtr)">
+            <summary>
+            该函数将创建指定窗口的线程设置到前台，并且激活该窗口。键盘输入转向该窗口，并为用户改各种可视的记号。系统给创建前台窗口的线程分配的权限稍高于其他线程
+            </summary>
+            <remarks>
+            函数原型：BOOL SetForegroundWindow（HWND hWnd）
+            备注：前台窗口是z序顶部的窗口，是用户的工作窗口。在一个多任务优先抢占环境中，应让用户控制前台窗口。
+            </remarks>
+            <param name="hWnd">将被激活并被调入前台的窗口句柄</param>
+            <returns>如果窗口设入了前台，返回值为非零；如果窗口未被设入前台，返回值为零</returns>
+        </member>
+        <member name="T:TinyFx.Windows.WindowsUtil">
+            <summary>
+            Windows相关辅助类
+            </summary>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsUtil.RunCommand(System.String)">
+            <summary>
+            运行命令行语句并返回程序输出
+            </summary>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsUtil.GacInstall(System.String)">
+            <summary>
+            GAC注册DLL
+            </summary>
+            <param name="dll"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsUtil.ClearIETraces(TinyFx.Windows.IEMyTraces)">
+            <summary>
+            清除IE缓存
+            </summary>
+            <param name="traces"></param>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsUtil.SetIEProxy(System.String,System.Int32)">
+            <summary>
+            设置IE代理服务器
+            </summary>
+            <param name="ip">代理服务器IP</param>
+            <param name="port">代理服务器端口</param>
+        </member>
+        <member name="M:TinyFx.Windows.WindowsUtil.ClearIEProxy">
+            <summary>
+            清除IE代理服务器设置
+            </summary>
+        </member>
+        <member name="T:TinyFx.Windows.IEMyTraces">
+            <summary>
+            IE缓存项
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.TemporaryFiles">
+            <summary>
+            临时文件
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.Cookies">
+            <summary>
+            Cookies
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.History">
+            <summary>
+            历史
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.FormData">
+            <summary>
+            表单
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.Passwords">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.DeleteAll">
+            <summary>
+            删除全部
+            </summary>
+        </member>
+        <member name="F:TinyFx.Windows.IEMyTraces.DeleteAllAndAddOns">
+            <summary>
+            删除全部和插件
+            </summary>
+        </member>
+    </members>
+</doc>

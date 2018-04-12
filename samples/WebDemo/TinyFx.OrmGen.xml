@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ArrayOfDBONodeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DBONodeInfo>
+    <OrmSettings>
+      <Namespaces>WebDemo.DAL.demodb</Namespaces>
+      <OutputPath>DAL\demodb\</OutputPath>
+    </OrmSettings>
+    <DbInitSettings />
+    <ConnStrInfo>
+      <Provider>MySqlClient</Provider>
+      <ConnectionString>server=172.28.9.211;user id=root;pwd=root;database=demodb;Allow User Variables=True</ConnectionString>
+      <DataSource>172.28.9.211</DataSource>
+      <Database>demodb</Database>
+      <UserID>root</UserID>
+      <Password>root</Password>
+      <ConnectTimeout>15</ConnectTimeout>
+    </ConnStrInfo>
+  </DBONodeInfo>
+</ArrayOfDBONodeInfo>
